@@ -22,7 +22,7 @@ header {
 }
 
 .other-quizzes {
-    margin: 100px 26px 0;
+    margin: 100px 17px 0;
 }
 
 .box {
@@ -32,6 +32,7 @@ header {
     margin-bottom: 14px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url('/images/teste.jpg');
     background-size: cover;
+    border-radius: 5px;
 }
 
 .title {
@@ -58,6 +59,7 @@ header {
     background: #EC362D;
     border: none;
     border-radius: 15px;
+    margin-bottom: 30px;
 }
 
 .container  {
@@ -67,6 +69,11 @@ header {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     margin: 30px auto 0;
+    text-align: left;
+}
+
+span {
+    margin: 0 20px;
 }
 
 .setup {
@@ -88,6 +95,10 @@ header {
     outline: none;
     padding: 14px;
     font-size: 19px;
+}
+
+.questions {
+    margin: 12px 0 28px;
 }
 
 ::placeholder {

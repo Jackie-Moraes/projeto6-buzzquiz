@@ -21,24 +21,26 @@
     </header>
     
     <main>
-        <section class="other-quizzes hidden">
+        <!-- Todos os Quizzes -->
+        <section class="other-quizzes">
             <h2>Todos os Quizzes</h2>
             
-            <div class="quizz-box">
+            <div class="box">
                 <!-- <img src="images/teste.jpg" alt=""> -->
-                <div class="quizz-title">
+                <div class="title">
                     <span>TesteTesteTesteTesteTeste TesteTesteTesteTesteTesteTesteTeste</span>
                 </div>
             </div>
 
-            <div class="quizz-box">
+            <div class="box">
                 <!-- <img src="images/teste2.jpg" alt=""> -->
-                <div class="quizz-title">
+                <div class="title">
                     <span>O quão TESTE você é?</span>
                 </div>
             </div>
         </section>
 
+        <!-- Criação de Quizz - Info Básica -->
         <section class="creation hidden">
             <span><strong>Comece pelo começo</strong></span>
 
@@ -54,21 +56,32 @@
             <button>Prosseguir pra criar perguntas</button>
         </section>
 
-        <section class="creation">
+        <!-- Criação de Quizz - Perguntas do Quizz -->
+        <section class="creation hidden">
             <span><strong>Crie suas perguntas</strong></span>
 
             <div class="container">
                 <span><strong>Pergunta 1</strong></span>
-                
-                <div class="setup">
+                <div class="setup questions">
                     <input type="text" name="question" id="" placeholder="Texto da pergunta">
                     <input type="text" name="question-color" id="" placeholder="Cor de fundo da pergunta">
                 </div>
 
                 <span><strong>Resposta correta</strong></span>
+                <div class="setup questions">
+                    <input type="text" name="correct-question" id="" placeholder="Resposta correta">
+                    <input type="text" name="correct-question-url" id="" placeholder="URL da imagem">
+                </div>
+
+                <span><strong>Respostas incorretas</strong></span>
+                <div class="setup questions">
+                    <!-- O "X" represeta o número da pergunta incorreta -->
+                    <input type="text" name="incorrect-question-X" id="" placeholder="Resposta incorreta X">
+                    <input type="text" name="incorrect-question-url-X" id="" placeholder="URL da imagem X">
+                </div>
             </div>
 
-                
+            <button>Prosseguir pra criar níveis</button>
             </div>
         </section>
     </main>
