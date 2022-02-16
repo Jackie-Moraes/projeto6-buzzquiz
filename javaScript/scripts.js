@@ -110,7 +110,7 @@ function EnterQuizz(message){
 // Função para ir para a página de criar Quizzes
 function CreateQuizz(){
     document.querySelector('.main-page').classList.add('hidden');
-    document.querySelector('.quizz-answering').classList.remove('hidden');
+    document.querySelector('.info-quizz').classList.remove('hidden');
 }
 
 function verifyQuestions() {
@@ -156,17 +156,22 @@ function verifyLevels() {
 function verifyFinishQuizz() {
 
     let inputLocation = document.querySelectorAll('.levels-quizz input')
+    let inputCheck = 0;
     let inputVerifierCounter = 0;
 
     for (let i = 0; i < inputLocation.length; i++) {
         if (inputLocation[i].checkValidity()) {
             inputVerifierCounter++;
         }
+        if (inputLocation[i].value === '0') {
+            inputCheck = 1;
+        }
     }
 
-    if (inputVerifierCounter === inputLocation.length) {
+    if (inputVerifierCounter === inputLocation.length && inputCheck === 1) {
         document.querySelector('.levels-quizz').classList.add('hidden');
         document.querySelector('.finish-quizz').classList.remove('hidden');
+        finishQuizz();
     }
 }
 
@@ -237,7 +242,27 @@ function generateLevels() {
         `
     }
 
-    levelsLocale += `<button onclick="verifyFinishQuizz()">Finalizar Quizz</button>`;
+    levelsLocale.innerHTML += `<button onclick="verifyFinishQuizz()">Finalizar Quizz</button>`;
+}
+
+function finishQuizz() {
+    const finishLocale = document.querySelector('.finish-quizz');
+
+    finishLocale.innerHTML = `
+    <span><strong>Seu quizz está pronto!</strong></span>
+
+    <div class="box other-quizzes">
+        <div class="title">
+            <span>${quizzTitle}</span>
+        </div>
+    </div>
+
+    <button>Acessar Quizz</button>
+    <span onclick="backHome()">Voltar pra home</span>
+    `
+
+    let imagemQuizz = document.querySelector(".finish-quizz .box");
+    imagemQuizz.style.setProperty("background-image", `${gradient}, url('${quizzUrl}')`);
 }
 
 getQuizzes();
