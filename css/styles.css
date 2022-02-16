@@ -58,6 +58,18 @@ header {
     font-size: 21px;
 }
 
+/* -------------- Botão para criar outros Quizzes ----------------- */
+.create-quizz{
+    height: 30px;
+    width: 30px;
+    color: #EC362D;
+}
+
+.create-first-quizz button:hover,
+.create-quizz:hover{
+    cursor: pointer;
+}
+
 /* -------------- Seção de Seus Quizzes ------------------ */
 .my-quizzes{
     display: flex;
