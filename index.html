@@ -115,7 +115,7 @@
         </section>
 
         <!-- Criação de Quizz - Info Básica -->
-        <section class="creation hidden">
+        <section class="creation info-quizz hidden">
             <span><strong>Comece pelo começo</strong></span>
 
             <div class="container">
@@ -127,11 +127,11 @@
                 </div>
             </div>
 
-            <button>Prosseguir pra criar perguntas</button>
+            <button onclick="createQuestions()">Prosseguir pra criar perguntas</button>
         </section>
 
         <!-- Criação de Quizz - Perguntas do Quizz -->
-        <section class="creation hidden">
+        <section class="creation questions-quizz hidden">
             <span><strong>Crie suas perguntas</strong></span>
 
             <div class="container">
@@ -155,11 +155,11 @@
                 </div>
             </div>
 
-            <button>Prosseguir pra criar níveis</button>
+            <button onclick="createLevels()">Prosseguir pra criar níveis</button>
         </section>
 
-
-        <section class="creation hidden">
+        <!-- Criação de Quizz - Níveis do Quizz -->
+        <section class="creation levels-quizz hidden">
             <span><strong>Agora, decida os níveis!</strong></span>
 
             <div class="container">
@@ -198,10 +198,11 @@
                 </div>
             </div>
 
-            <button>Finalizar Quizz</button>
+            <button onclick="finishQuizz()">Finalizar Quizz</button>
         </section>
 
-        <section class="creation hidden">
+        <!-- Criação de Quizz - Finalização -->
+        <section class="creation finish-quizz hidden">
             <span><strong>Seu quizz está pronto!</strong></span>
 
             <div class="box other-quizzes">
@@ -211,7 +212,7 @@
             </div>
 
             <button>Acessar Quizz</button>
-            <span>Voltar pra home</span>
+            <span onclick="backHome()">Voltar pra home</span>
         </section>
     </main>
 

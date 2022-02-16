@@ -26,13 +26,13 @@ function MostrarQuizzes(){
     let selecionarImagem = null;
     for(contador=0;contador<Quizzes.length;contador++){
         
-
         AllQuizzes.innerHTML += `
         <div class="box" id="${Quizzes[contador].id}">
             <div class="title">
                 <span>${Quizzes[contador].title}</span>
             </div>
         </div>`
+
         selecionarImagem = document.getElementById(`${Quizzes[contador].id}`);
         selecionarImagem.style.setProperty("background-image", `${gradient}, url('${Quizzes[contador].image}')`)
     }
@@ -43,5 +43,25 @@ function MostrarQuizzes(){
 // Função para ir para a página de criar Quizzes
 function CreateQuizz(){
     document.querySelector('.main-page').classList.add('hidden');
-    document.querySelector('.creation').classList.remove('hidden');
+    document.querySelector('.info-quizz').classList.remove('hidden');
+}
+
+function createQuestions() {
+    document.querySelector('.info-quizz').classList.add('hidden');
+    document.querySelector('.questions-quizz').classList.remove('hidden');
+}
+
+function createLevels() {
+    document.querySelector('.questions-quizz').classList.add('hidden');
+    document.querySelector('.levels-quizz').classList.remove('hidden');
+}
+
+function finishQuizz() {
+    document.querySelector('.levels-quizz').classList.add('hidden');
+    document.querySelector('.finish-quizz').classList.remove('hidden');
+}
+
+function backHome() {
+    document.querySelector('.finish-quizz').classList.add('hidden');
+    document.querySelector('.main-page').classList.remove('hidden');
 }
