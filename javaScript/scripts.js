@@ -80,25 +80,19 @@ function EnterQuizz(message){
         <div class="question">
             <h4 id="${cont}">${Questions[cont].title}</h4>
             <div class="answers">
-                <div class="answer">
-                    <img src="/images/teste.jpg" alt="TESTE">
-                    <p>teste</p>
-                </div>
-                <div class="answer">
-                    <img src="/images/teste.jpg" alt="TESTE">
-                    <p>teste</p>
-                </div>
-                <div class="answer">
-                    <img src="/images/teste.jpg" alt="TESTE">
-                    <p>teste</p>
-                </div>
-                <div class="answer">
-                    <img src="/images/teste.jpg" alt="TESTE">
-                    <p>teste</p>
-                </div>
+                
             </div>
         </div>
         `;
+
+        const answers = Questions[cont].answers;
+        for(let i= 0;i<answers.length;i++){
+                `<div class="answer">
+                    <img src="${answers[i].image}" alt="TESTE">
+                    <p>${answers[i].text}</p>
+                </div>`
+        }
+
         let CorTitulo = document.getElementById(`${cont}`);
         CorTitulo.style.setProperty("background-color", `${Questions[cont].color}`)
     }
@@ -110,7 +104,7 @@ function EnterQuizz(message){
 // Função para ir para a página de criar Quizzes
 function CreateQuizz(){
     document.querySelector('.main-page').classList.add('hidden');
-    document.querySelector('.quizz-answering').classList.remove('hidden');
+    document.querySelector('.info-quizz').classList.remove('hidden');
 }
 
 function verifyQuestions() {
