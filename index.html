@@ -38,7 +38,6 @@
 
             <!-- Todos os Quizzes -->
             <section class="other-quizzes">
-                <h2>Todos os Quizzes</h2>
             </section>
         </section>
 
@@ -112,80 +111,15 @@
                 </div>
             </div>
 
-            <button onclick="createQuestions()">Prosseguir pra criar perguntas</button>
+            <button onclick="verifyQuestions()">Prosseguir pra criar perguntas</button>
         </section>
 
         <!-- Criação de Quizz - Perguntas do Quizz -->
         <section class="creation questions-quizz hidden">
-            <span><strong>Crie suas perguntas</strong></span>
-
-            <div class="container">
-                <span><strong>Pergunta 1</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número da pergunta, para quando for implementado jS -->
-                    <input type="text" name="Texto da Pergunta X" required minlength="20" placeholder="Texto da pergunta">
-                    <input type="text" name="Cor da Pergunta X" required maxlength="7" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" placeholder="Cor de fundo da pergunta">
-                </div>
-
-                <span><strong>Resposta correta</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número da pergunta, para quando for implementado jS -->
-                    <input type="text" name="Resposta Correta (Pergunta X)" required placeholder="Resposta correta">
-                    <input type="url" name="URL da Imagem Correta (Pergunta X)" required placeholder="URL da imagem">
-                </div>
-
-                <span><strong>Respostas incorretas</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número da pergunta, para quando for implementado jS -->
-                    <input type="text" name="Resposta Incorreta X (Pergunta X)" required placeholder="Resposta incorreta X">
-                    <input type="url" name="URL da Imagem Incorreta X (Pergunta X)" required placeholder="URL da imagem X">
-                </div>
-            </div>
-
-            <button onclick="createLevels()">Prosseguir pra criar níveis</button>
         </section>
 
         <!-- Criação de Quizz - Níveis do Quizz -->
         <section class="creation levels-quizz hidden">
-            <span><strong>Agora, decida os níveis!</strong></span>
-
-            <div class="container">
-
-                <span><strong>Nível 1</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número do nível, para quando for implementado jS -->
-                    <input type="text" name="Título Nível X" required minlength="10" placeholder="Título do nível">
-                    <input type="number" name="Percentual Nível X" required min="0" max="100" placeholder="% de acerto mínima">
-                    <input type="url" name="URL da Imagem Nível X" required placeholder="URL da imagem do nível">
-                    <textarea name="Descrição Nível X" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
-                </div>
-            </div>
-
-            <div class="container">
-
-                <span><strong>Nível 2</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número do nível, para quando for implementado jS -->
-                    <input type="text" name="Título Nível X" required minlength="10" placeholder="Título do nível">
-                    <input type="number" name="Percentual Nível X" required min="0" max="100" placeholder="% de acerto mínima">
-                    <input type="url" name="URL da Imagem Nível X" required placeholder="URL da imagem do nível">
-                    <textarea name="Descrição Nível X" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
-                </div>
-            </div>
-
-            <div class="container">
-
-                <span><strong>Nível 3</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número do nível, para quando for implementado jS -->
-                    <input type="text" name="Título Nível X" required minlength="10" placeholder="Título do nível">
-                    <input type="number" name="Percentual Nível X" required min="0" max="100" placeholder="% de acerto mínima">
-                    <input type="url" name="URL da Imagem Nível X" required placeholder="URL da imagem do nível">
-                    <textarea name="Descrição Nível X" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
-                </div>
-            </div>
-
-            <button onclick="finishQuizz()">Finalizar Quizz</button>
         </section>
 
         <!-- Criação de Quizz - Finalização -->
