@@ -131,6 +131,11 @@ header {
     font-size: 13px;
 }
 
+.answer img{
+    height: 113px;
+    width: 163px;
+}
+
 .question img{
     height: 113px;
     width: 163px;
