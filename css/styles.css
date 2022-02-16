@@ -262,6 +262,10 @@ textarea {
     color: #BABABA;
 }
 
+input:invalid, textarea:invalid {
+    background: #FFE9E9;
+}
+
 .hidden {
     display: none;
 }

@@ -23,7 +23,7 @@
     </header>
 
     <main>
-        <section class="main-page">
+        <section class="main-page hidden">
             <!-- Botão para criar o primeiro quizz -->
             <div class="create-first-quizz">
                 <span> Você não criou nenhum quizz ainda :( </span>
@@ -120,10 +120,10 @@
 
             <div class="container">
                 <div class="setup">
-                    <input type="text" name="title" id="" placeholder="Título do seu quizz">
-                    <input type="url" name="url" id="" placeholder="URL da imagem do seu quizz">
-                    <input type="text" name="question-quantity" id="" placeholder="Quantidade de perguntas do quizz">
-                    <input type="text" name="level-quantity" id="" placeholder="Quantidade de níveis do quizz">
+                    <input type="text" name="title" required minlength="20" maxlength="65" placeholder="Título do seu quizz">
+                    <input type="url" name="url" required  placeholder="URL da imagem do seu quizz">
+                    <input type="number" name="question-quantity" required min="3" placeholder="Quantidade de perguntas do quizz">
+                    <input type="number" name="level-quantity" required min="2" placeholder="Quantidade de níveis do quizz">
                 </div>
             </div>
 
@@ -137,21 +137,21 @@
             <div class="container">
                 <span><strong>Pergunta 1</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="question" id="" placeholder="Texto da pergunta">
-                    <input type="text" name="question-color" id="" placeholder="Cor de fundo da pergunta">
+                    <input type="text" name="question" required minlength="20" placeholder="Texto da pergunta">
+                    <input type="text" name="question-color" required maxlength="7" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" placeholder="Cor de fundo da pergunta">
                 </div>
 
                 <span><strong>Resposta correta</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="correct-question" id="" placeholder="Resposta correta">
-                    <input type="text" name="correct-question-url" id="" placeholder="URL da imagem">
+                    <input type="text" name="correct-question" required placeholder="Resposta correta">
+                    <input type="url" name="correct-question-url" required placeholder="URL da imagem">
                 </div>
 
                 <span><strong>Respostas incorretas</strong></span>
                 <div class="setup questions">
-                    <!-- O "X" represeta o número da pergunta incorreta -->
-                    <input type="text" name="incorrect-question-X" id="" placeholder="Resposta incorreta X">
-                    <input type="text" name="incorrect-question-url-X" id="" placeholder="URL da imagem X">
+                    <!-- O "X" represeta o número da pergunta incorreta, para quando for implementado jS -->
+                    <input type="text" name="incorrect-question-X" required placeholder="Resposta incorreta X">
+                    <input type="url" name="incorrect-question-url-X" required placeholder="URL da imagem X">
                 </div>
             </div>
 
@@ -160,17 +160,18 @@
         </section>
 
 
-        <section class="creation hidden">
+        <section class="creation">
             <span><strong>Agora, decida os níveis!</strong></span>
 
             <div class="container">
 
                 <span><strong>Nível 1</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="question" id="" placeholder="Título do nível">
-                    <input type="text" name="question-color" id="" placeholder="% de acerto mínima">
-                    <input type="text" name="question-color" id="" placeholder="URL da imagem do nível">
-                    <textarea name="question-color" rows="5" id="" placeholder="Descrição do nível"></textarea>
+                    <!-- O "X" represeta o número do nível, para quando for implementado jS -->
+                    <input type="text" name="title-level-X" required minlength="10" placeholder="Título do nível">
+                    <input type="number" name="percentage-level-X" required min="0" max="100" placeholder="% de acerto mínima">
+                    <input type="url" name="url-level-X" required placeholder="URL da imagem do nível">
+                    <textarea name="description-level-X" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
                 </div>
             </div>
 
@@ -178,10 +179,11 @@
 
                 <span><strong>Nível 2</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="question" id="" placeholder="Título do nível">
-                    <input type="text" name="question-color" id="" placeholder="% de acerto mínima">
-                    <input type="text" name="question-color" id="" placeholder="URL da imagem do nível">
-                    <textarea name="question-color" rows="5" id="" placeholder="Descrição do nível"></textarea>
+                    <!-- O "X" represeta o número do nível, para quando for implementado jS -->
+                    <input type="text" name="title-level-X" required minlength="10" placeholder="Título do nível">
+                    <input type="number" name="percentage-level-X" required min="0" max="100" placeholder="% de acerto mínima">
+                    <input type="url" name="url-level-X" required placeholder="URL da imagem do nível">
+                    <textarea name="description-level-X" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
                 </div>
             </div>
 
@@ -189,10 +191,11 @@
 
                 <span><strong>Nível 3</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="question" id="" placeholder="Título do nível">
-                    <input type="text" name="question-color" id="" placeholder="% de acerto mínima">
-                    <input type="text" name="question-color" id="" placeholder="URL da imagem do nível">
-                    <textarea name="question-color" rows="5" id="" placeholder="Descrição do nível"></textarea>
+                    <!-- O "X" represeta o número do nível, para quando for implementado jS -->
+                    <input type="text" name="title-level-X" required minlength="10" placeholder="Título do nível">
+                    <input type="number" name="percentage-level-X" required min="0" max="100" placeholder="% de acerto mínima">
+                    <input type="url" name="url-level-X" required placeholder="URL da imagem do nível">
+                    <textarea name="description-level-X" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
                 </div>
             </div>
         </section>
