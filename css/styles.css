@@ -93,8 +93,19 @@ span {
     font-style: italic;
     font-weight: 400;
     outline: none;
-    padding: 14px;
+    padding-left: 14px;
     font-size: 19px;
+}
+
+.desc {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.desc input {
+    width: 90%;
+    height: 200px;
 }
 
 .questions {
