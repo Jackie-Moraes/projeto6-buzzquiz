@@ -143,19 +143,20 @@ span {
     font-size: 19px;
 }
 
-.desc {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.desc input {
-    width: 90%;
-    height: 200px;
-}
-
 .questions {
     margin: 12px 0 28px;
+}
+
+textarea {
+    width: 90%;
+    background: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    font-style: italic;
+    font-weight: 400;
+    outline: none;
+    padding-left: 14px;
+    font-size: 19px;
 }
 
 ::placeholder {
@@ -165,3 +166,4 @@ span {
 .hidden {
     display: none;
 }
+
