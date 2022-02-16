@@ -103,6 +103,7 @@ function verifyLevels() {
     if (inputVerifierCounter === inputLocation.length) {
         document.querySelector('.questions-quizz').classList.add('hidden');
         document.querySelector('.levels-quizz').classList.remove('hidden');
+        generateLevels();
     }
 }
 
@@ -156,19 +157,41 @@ function generateQuestions() {
                 </div>
 
                 <div class="setup questions">
-                    <input type="text" name="Resposta Incorreta 2 (Pergunta ${i})" required placeholder="Resposta incorreta 2">
-                    <input type="url" name="URL da Imagem Incorreta 2 (Pergunta ${i})" required placeholder="URL da imagem 2">
+                    <input type="text" name="Resposta Incorreta 2 (Pergunta ${i})" placeholder="Resposta incorreta 2">
+                    <input type="url" name="URL da Imagem Incorreta 2 (Pergunta ${i})" placeholder="URL da imagem 2">
                 </div>
 
                 <div class="setup questions">
-                    <input type="text" name="Resposta Incorreta 3 (Pergunta ${i})" required placeholder="Resposta incorreta 3">
-                    <input type="url" name="URL da Imagem Incorreta 3 (Pergunta ${i})" required placeholder="URL da imagem 3">
+                    <input type="text" name="Resposta Incorreta 3 (Pergunta ${i})" placeholder="Resposta incorreta 3">
+                    <input type="url" name="URL da Imagem Incorreta 3 (Pergunta ${i})" placeholder="URL da imagem 3">
                 </div>
 
             </div>`
     }
 
     questionsLocale.innerHTML += `<button onclick="verifyLevels()">Prosseguir pra criar níveis</button>`;
+}
+
+function generateLevels() {
+    const levelsLocale = document.querySelector('.levels-quizz');
+    levelsLocale.innerHTML = "<span><strong>Agora, decida os níveis!</strong></span>";
+
+    for (let i = 1; i <= quizzLevels; i++) {
+        levelsLocale.innerHTML += `
+        <div class="container">
+
+                <span><strong>Nível ${i}</strong></span>
+                <div class="setup questions">
+                    <input type="text" name="Título Nível ${i}" required minlength="10" placeholder="Título do nível">
+                    <input type="number" name="Percentual Nível ${i}" required min="0" max="100" placeholder="% de acerto mínima">
+                    <input type="url" name="URL da Imagem Nível ${i}" required placeholder="URL da imagem do nível">
+                    <textarea name="Descrição Nível ${i}" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
+                </div>
+            </div>
+        `
+    }
+
+    levelsLocale += `<button onclick="verifyFinishQuizz()">Finalizar Quizz</button>`;
 }
 
 getQuizzes();
