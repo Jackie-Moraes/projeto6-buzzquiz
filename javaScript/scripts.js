@@ -23,6 +23,7 @@ function CarregarQuizzes(message){
 // Função para mostrar os Quizzes na tela 
 function MostrarQuizzes(){
     const AllQuizzes = document.querySelector('.other-quizzes');
+    AllQuizzes.innerHTML = "";
     let selecionarImagem = null;
     for(contador=0;contador<Quizzes.length;contador++){
         const id = Quizzes[contador].id;
@@ -115,6 +116,7 @@ function finishQuizz() {
 }
 
 function backHome() {
+    getQuizzes();
     document.querySelector('.finish-quizz').classList.add('hidden');
     document.querySelector('.main-page').classList.remove('hidden');
 }
