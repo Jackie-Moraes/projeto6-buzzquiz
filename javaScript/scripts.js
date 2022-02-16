@@ -47,8 +47,22 @@ function CreateQuizz(){
 }
 
 function createQuestions() {
-    document.querySelector('.info-quizz').classList.add('hidden');
-    document.querySelector('.questions-quizz').classList.remove('hidden');
+    
+let inputLocation = document.querySelectorAll('.info-quizz input')
+let inputVerifierCounter = 0;
+
+    for (let i = 0; i < inputLocation.length; i++) {
+        if(!inputLocation[i].checkValidity()) {
+            alert(`Preencha o campo "${inputLocation[i].name}" corretamente.`)
+        } else {
+            inputVerifierCounter++;
+        }
+    }
+
+    if (inputVerifierCounter === inputLocation.length) {
+        document.querySelector('.info-quizz').classList.add('hidden');
+        document.querySelector('.questions-quizz').classList.remove('hidden');
+    }
 }
 
 function createLevels() {
