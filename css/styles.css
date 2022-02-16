@@ -23,6 +23,7 @@ header {
     align-items: center;
 }
 
+/* -------- Botão para criar o primeiro Quizz ------------*/
 .create-first-quizz{
     width: 340px;
     height: 181px;
@@ -50,6 +51,20 @@ header {
     width: 151px;
     height: 40px;
     font-size: 21px;
+}
+
+/* -------------- Aba de Seus Quizzes ------------------ */
+.my-quizzes{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 35px 17px 0;
+}
+/* -------------- Botão para criar outros Quizzes ----------------- */
+.create-quizz{
+    height: 30px;
+    width: 30px;
+    color: #EC362D;
 }
 
 .other-quizzes {
