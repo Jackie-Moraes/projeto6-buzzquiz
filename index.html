@@ -38,7 +38,6 @@
 
             <!-- Todos os Quizzes -->
             <section class="other-quizzes">
-                <h2>Todos os Quizzes</h2>
             </section>
         </section>
 
@@ -113,37 +112,11 @@
                 </div>
             </div>
 
-            <button onclick="createQuestions()">Prosseguir pra criar perguntas</button>
+            <button onclick="verifyQuestions()">Prosseguir pra criar perguntas</button>
         </section>
 
         <!-- Criação de Quizz - Perguntas do Quizz -->
         <section class="creation questions-quizz hidden">
-            <span><strong>Crie suas perguntas</strong></span>
-
-            <div class="container">
-                <span><strong>Pergunta 1</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número da pergunta, para quando for implementado jS -->
-                    <input type="text" name="Texto da Pergunta X" required minlength="20" placeholder="Texto da pergunta">
-                    <input type="text" name="Cor da Pergunta X" required maxlength="7" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" placeholder="Cor de fundo da pergunta">
-                </div>
-
-                <span><strong>Resposta correta</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número da pergunta, para quando for implementado jS -->
-                    <input type="text" name="Resposta Correta (Pergunta X)" required placeholder="Resposta correta">
-                    <input type="url" name="URL da Imagem Correta (Pergunta X)" required placeholder="URL da imagem">
-                </div>
-
-                <span><strong>Respostas incorretas</strong></span>
-                <div class="setup questions">
-                    <!-- O "X" represeta o número da pergunta, para quando for implementado jS -->
-                    <input type="text" name="Resposta Incorreta X (Pergunta X)" required placeholder="Resposta incorreta X">
-                    <input type="url" name="URL da Imagem Incorreta X (Pergunta X)" required placeholder="URL da imagem X">
-                </div>
-            </div>
-
-            <button onclick="createLevels()">Prosseguir pra criar níveis</button>
         </section>
 
         <!-- Criação de Quizz - Níveis do Quizz -->
@@ -186,7 +159,7 @@
                 </div>
             </div>
 
-            <button onclick="finishQuizz()">Finalizar Quizz</button>
+            <button onclick="verifyFinishQuizz()">Finalizar Quizz</button>
         </section>
 
         <!-- Criação de Quizz - Finalização -->
