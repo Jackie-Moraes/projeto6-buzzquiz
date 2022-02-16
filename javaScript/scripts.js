@@ -29,33 +29,79 @@ function MostrarQuizzes(){
         const id = Quizzes[contador].id;
 
         AllQuizzes.innerHTML += `
-        <div class="box" id="${id}" onclick = "EnterQuizz(${id})">
+        <div class="box" id="${id}" onclick = "GetQuizz(${id})">
             <div class="title">
                 <span>${Quizzes[contador].title}</span>
             </div>
         </div>`
 
         selecionarImagem = document.getElementById(`${id}`);
-        selecionarImagem.style.setProperty("background-image", `${gradient}, url('${Quizzes[contador].image}')`)
+        selecionarImagem.style.setProperty("background-image", `${gradient}, url('${Quizzes[contador].image}')`);
     }
 }
 
-//Função para pegar o Quizz Clicado
-function EnterQuizz(Id){
+//Função para pegar o Quizz clicado da API
+function GetQuizz(Id){
     const request = axios.get(BUZZ_API +Id); 
-    request.then(DeuCerto); 
+    request.then(EnterQuizz); 
 } 
     
-//Função para pegar o Quizz clicado da API
-function DeuCerto(message){ 
-    console.log(message.data);
+//Função para colocar o quizz na tela
+function EnterQuizz(message){ 
+    QuizzSelecionado = message.data;
+    document.querySelector('.main-page').classList.add('hidden');
+    const QuizzPage = document.querySelector('.quizz-answering');
+    QuizzPage.classList.remove('hidden');
+    QuizzPage.innerHTML = `
+    <div class="header-quizz">
+        <h2 class="header-title">
+        </h2>
+    </div>`;
+
+    // Coloca a Imagem e Titulo do Quizz na header da página
+    const QuizzHeader = QuizzPage.querySelector('.header-quizz');
+    QuizzHeader.style.setProperty("background-image", `${gradient}, url('${QuizzSelecionado.image}')`);
+    QuizzHeader.querySelector('.header-title').innerHTML = QuizzSelecionado.title;
+
+    const Questions = QuizzSelecionado.questions;
+
+    for(let cont=0;cont<QuizzSelecionado.questions.length;cont++){
+        
+        QuizzPage.innerHTML +=`
+        <div class="question">
+            <h4 id="${cont}">${Questions[cont].title}</h4>
+            <div class="answers">
+                <div class="answer">
+                    <img src="/images/teste.jpg" alt="TESTE">
+                    <p>teste</p>
+                </div>
+                <div class="answer">
+                    <img src="/images/teste.jpg" alt="TESTE">
+                    <p>teste</p>
+                </div>
+                <div class="answer">
+                    <img src="/images/teste.jpg" alt="TESTE">
+                    <p>teste</p>
+                </div>
+                <div class="answer">
+                    <img src="/images/teste.jpg" alt="TESTE">
+                    <p>teste</p>
+                </div>
+            </div>
+        </div>
+        `;
+        let CorTitulo = document.getElementById(`${cont}`);
+        CorTitulo.style.setProperty("background-color", `${Questions[cont].color}`)
+    }
+
+
 }
 
 
 // Função para ir para a página de criar Quizzes
 function CreateQuizz(){
     document.querySelector('.main-page').classList.add('hidden');
-    document.querySelector('.info-quizz').classList.remove('hidden');
+    document.querySelector('.quizz-answering').classList.remove('hidden');
 }
 
 function createQuestions() {
