@@ -21,8 +21,9 @@
     </header>
     
     <main>
+        <section class="main-page">
         <!-- Botão para criar o primeiro quizz -->
-        <section class="create-first-quizz">
+        <section class="create-first-quizz" onclick="CreateQuizz()">
             <span> Você não criou nenhum quizz ainda :( </span>
             <button>Criar Quizz</button>
         </section>
@@ -30,7 +31,7 @@
         <!-- Aba de Seus Quizzes -->
         <section class="my-quizzes hidden">
             <h2>Seus Quizzes</h2>
-            <ion-icon class="create-quizz" name="add-circle"></ion-icon>
+            <ion-icon onclick="CreateQuizz()" class="create-quizz" name="add-circle"></ion-icon>
         </section>
 
         <!-- Todos os Quizzes -->
@@ -50,6 +51,7 @@
                     <span>O quão TESTE você é?</span>
                 </div>
             </div>
+        </section>
         </section>
 
         <!-- Criação de Quizz - Info Básica -->
@@ -98,7 +100,7 @@
         </section>
 
         
-        <section class="creation">
+        <section class="creation hidden">
             <span><strong>Agora, decida os níveis!</strong></span>
 
             <div class="container">
