@@ -2,6 +2,7 @@
 
 const BUZZ_API = "https://mock-api.driven.com.br/api/v4/buzzquizz/";
 let Quizzes= [];
+let gradient = "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%)"
 
 getQuizzes();
 
@@ -22,13 +23,18 @@ function CarregarQuizzes(message){
 // Função para mostrar os Quizzes na tela 
 function MostrarQuizzes(){
     const AllQuizzes = document.querySelector('.other-quizzes');
+    let selecionarImagem = null;
     for(contador=0;contador<Quizzes.length;contador++){
+        
+
         AllQuizzes.innerHTML += `
-        <div class="box">
+        <div class="box" id="${Quizzes[contador].id}">
             <div class="title">
                 <span>${Quizzes[contador].title}</span>
             </div>
         </div>`
+        selecionarImagem = document.getElementById(`${Quizzes[contador].id}`);
+        selecionarImagem.style.setProperty("background-image", `${gradient}, url('${Quizzes[contador].image}')`)
     }
 }
 
