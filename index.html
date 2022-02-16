@@ -23,7 +23,7 @@
     </header>
 
     <main>
-        <section class="main-page hidden">
+        <section class="main-page">
             <!-- Botão para criar o primeiro quizz -->
             <div class="create-first-quizz" onclick="CreateQuizz()">
                 <span> Você não criou nenhum quizz ainda :( </span>
@@ -57,11 +57,11 @@
         </section>
 
         <!-- Página de resposta do Quizz -->
-        <section class="quizz-answering ">
+        <section class="quizz-answering hidden">
             <div class="header-quizz">
-                <div class="header-title">
-                    <span>O quão TESTE você é?</span>
-                </div>
+                <h2 class="header-title">
+                    O quão TESTE você é?
+                </h2>
             </div>
 
             <div class="question">
@@ -87,7 +87,7 @@
             </div>
             
             <div class="question">
-                <h4>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h4>
+                <h4>Qual dos objetos abaixo NÃO é uma horcrux?</h4>
                 <div class="answers">
                     <div class="answer">
                         <img src="/images/teste.jpg" alt="TESTE">
@@ -198,6 +198,7 @@
         </section>
     </main>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="javaScript/scripts.js"></script>
 </body>
