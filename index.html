@@ -8,7 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
 
@@ -19,39 +21,72 @@
     <header>
         <h1>BuzzQuizz</h1>
     </header>
-    
+
     <main>
-        <section class="main-page">
-        <!-- Botão para criar o primeiro quizz -->
-        <section class="create-first-quizz" onclick="CreateQuizz()">
-            <span> Você não criou nenhum quizz ainda :( </span>
-            <button>Criar Quizz</button>
-        </section>
-
-        <!-- Aba de Seus Quizzes -->
-        <section class="my-quizzes hidden">
-            <h2>Seus Quizzes</h2>
-            <ion-icon onclick="CreateQuizz()" class="create-quizz" name="add-circle"></ion-icon>
-        </section>
-
-        <!-- Todos os Quizzes -->
-        <section class="other-quizzes">
-            <h2>Todos os Quizzes</h2>
-            
-            <div class="box">
-                <!-- <img src="images/teste.jpg" alt=""> -->
-                <div class="title">
-                    <span>TesteTesteTesteTesteTeste TesteTesteTesteTesteTesteTesteTeste</span>
-                </div>
+        <section class="main-page hidden">
+            <!-- Botão para criar o primeiro quizz -->
+            <div class="create-first-quizz" onclick="CreateQuizz()">
+                <span> Você não criou nenhum quizz ainda :( </span>
+                <button>Criar Quizz</button>
             </div>
 
-            <div class="box">
-                <!-- <img src="images/teste2.jpg" alt=""> -->
-                <div class="title">
+            <!-- Aba de Seus Quizzes -->
+            <section class="my-quizzes hidden">
+                <h2>Seus Quizzes</h2>
+                <ion-icon onclick="CreateQuizz()" class="create-quizz" name="add-circle"></ion-icon>
+            </section>
+
+            <!-- Todos os Quizzes -->
+            <section class="other-quizzes">
+                <h2>Todos os Quizzes</h2>
+
+                <div class="box">
+                    <!-- <img src="images/teste.jpg" alt=""> -->
+                    <div class="title">
+                        <span>TesteTesteTesteTesteTeste TesteTesteTesteTesteTesteTesteTeste</span>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <!-- <img src="images/teste2.jpg" alt=""> -->
+                    <div class="title">
+                        <span>O quão TESTE você é?</span>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Página de resposta do Quizz -->
+        <section class="quizz-answering ">
+            <div class="header-quizz">
+                <div class="header-title">
                     <span>O quão TESTE você é?</span>
                 </div>
             </div>
-        </section>
+
+            <div class="question">
+                <h4>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h4>
+                <div class="answers">
+                    <div class="answer">
+                        <img src="/images/teste.jpg" alt="TESTE">
+                        <p>teste</p>
+                    </div>
+                    <div class="answer">
+                        <img src="/images/teste.jpg" alt="TESTE">
+                        <p>teste</p>
+                    </div>
+                    <div class="answer">
+                        <img src="/images/teste.jpg" alt="TESTE">
+                        <p>teste</p>
+                    </div>
+                    <div class="answer">
+                        <img src="/images/teste.jpg" alt="TESTE">
+                        <p>teste</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <img class="header-quizz" src="images/teste.jpg" alt="Imagem Quizz"> -->
+
         </section>
 
         <!-- Criação de Quizz - Info Básica -->
@@ -99,7 +134,7 @@
             </div>
         </section>
 
-        
+
         <section class="creation hidden">
             <span><strong>Agora, decida os níveis!</strong></span>
 
@@ -141,4 +176,5 @@
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="javaScript/scripts.js"></script>
 </body>
+
 </html>

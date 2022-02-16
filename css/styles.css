@@ -57,13 +57,84 @@ header {
     font-size: 21px;
 }
 
-/* -------------- Aba de Seus Quizzes ------------------ */
+/* -------------- Seção de Seus Quizzes ------------------ */
 .my-quizzes{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 340px;
 }
+
+/* -------------- Página do Quizz ------------------ */
+.quizz-answering{
+    margin-top: 235px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question{
+    height: 436px;
+    width: 375px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.question h4{
+    height: 89px;
+    width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #434CA0;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px;
+    margin-top: 18px;
+}
+
+.answers{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.answer{
+    margin: 6px;
+}
+
+.answer p{
+    margin: 0;
+}
+
+.question img{
+    height: 113px;
+    width: 163px;
+}
+
+/* Imagem do Quizz que fica no topo da página ao entrar no Quizz */
+.header-quizz{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/teste.jpg');
+    height: 142px;
+    background-size: cover;
+    width: 100%;
+    position: fixed;
+    top: 69px;
+    background-position: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-title{
+    position: absolute;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 19px;
+}
+
 /* -------------- Botão para criar outros Quizzes ----------------- */
 .create-quizz{
     height: 30px;
