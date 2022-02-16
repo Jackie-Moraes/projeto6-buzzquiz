@@ -73,31 +73,29 @@ function EnterQuizz(message){
     QuizzHeader.querySelector('.header-title').innerHTML = QuizzSelecionado.title;
 
     const Questions = QuizzSelecionado.questions;
+    let IdAnswer=-1;
 
     for(let cont=0;cont<QuizzSelecionado.questions.length;cont++){
         
         QuizzPage.innerHTML +=`
         <div class="question">
             <h4 id="${cont}">${Questions[cont].title}</h4>
-            <div class="answers">
-                
-            </div>
-        </div>
-        `;
-
+            <div id="${IdAnswer}" class="answers"></div>
+        </div>`;
+            
+        const GetToAnswers = document.getElementById(`${IdAnswer}`);
         const answers = Questions[cont].answers;
         for(let i= 0;i<answers.length;i++){
-                `<div class="answer">
+            GetToAnswers.innerHTML += `<div class="answer">
                     <img src="${answers[i].image}" alt="TESTE">
                     <p>${answers[i].text}</p>
                 </div>`
         }
 
+        IdAnswer--;
         let CorTitulo = document.getElementById(`${cont}`);
         CorTitulo.style.setProperty("background-color", `${Questions[cont].color}`)
     }
-
-
 }
 
 
