@@ -85,6 +85,9 @@ function EnterQuizz(message){
             
         const GetToAnswers = document.getElementById(`${IdAnswer}`);
         const answers = Questions[cont].answers;
+        console.log(answers);
+        answers.sort(embaralhar);
+        console.log(answers);
         for(let i= 0;i<answers.length;i++){
             GetToAnswers.innerHTML += `<div class="answer">
                     <img src="${answers[i].image}" alt="TESTE">
@@ -96,6 +99,11 @@ function EnterQuizz(message){
         let CorTitulo = document.getElementById(`${cont}`);
         CorTitulo.style.setProperty("background-color", `${Questions[cont].color}`)
     }
+}
+
+//Função para embaralhar a matriz
+function embaralhar() { 
+	return Math.random() - 0.5; 
 }
 
 
