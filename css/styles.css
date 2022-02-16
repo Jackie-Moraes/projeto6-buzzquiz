@@ -149,10 +149,12 @@ header {
     color: #EC362D;
 }
 
+/* Espaçamento de outros Quizzes */
 .other-quizzes {
     margin: 35px 17px 0;
 }
 
+/* Miniatura dos Quizzes */
 .box {
     position: relative;
     width: 340px;
@@ -163,6 +165,7 @@ header {
     border-radius: 5px;
 }
 
+/* Texto sobre o Quizz */
 .title {
     position: absolute;
     bottom: 10%;
@@ -190,6 +193,7 @@ header {
     margin-bottom: 30px;
 }
 
+/* Container branco para Perguntas, Níveis e setup geral do Quizz */
 .container  {
     width: 100vw;
     height: auto;
@@ -229,6 +233,7 @@ span {
     margin: 12px 0 28px;
 }
 
+/* Descrição do Quizz */
 textarea {
     width: 90%;
     background: #FFFFFF;
