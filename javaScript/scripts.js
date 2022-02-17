@@ -144,14 +144,32 @@ function showResult(){
     const result = parseInt((hitCounter/QuestionQuant) * 100);
     const QuizzPage = document.querySelector('.quizz-answering');
     const levels = QuizzSelecionado.levels;
-    console.log(levels)
+    let imgResult = null;
+    let titleResult = null;
+    let textResult = null;
+
+    // let Arraylevels = [];
+    // for(let cont = 0;cont<levels.length;cont++){
+    //     Arraylevels[cont] = levels[cont].minValue;
+    // }
+
+    levels.sort(sortAscending);
+    console.log(levels);
+
+    for(let cont = 0;cont<levels.length;cont++){
+        if(result > levels[cont].minValue){
+            imgResult = levels[cont].image;
+            titleResult = levels[cont].title;
+            textResult =  levels[cont].text;
+        }
+    }
 
     QuizzPage.innerHTML += `
     <section class="QuizzEnd">
         <div class="result">
-            <h4>${result}% de acerto:</h4>
-            <img src="/images/teste.jpg" alt="TESTE">
-            <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
+            <h4>${result}% de acerto: ${titleResult}</h4>
+            <img src="${imgResult}" alt="TESTE">
+            <p>${textResult}</p>
         </div>
         <button class="ReiniciarQuizz">Reiniciar Quizz</button>
         <button onclick="backHome()">Voltar pra home</button>
@@ -163,6 +181,11 @@ function showResult(){
 function embaralhar() { 
 	return Math.random() - 0.5; 
 }
+
+//Função para colocar array na ordem
+function sortAscending(a, b){
+    return (a - b);
+  }
 
 
 // Função para ir para a página de criar Quizzes
