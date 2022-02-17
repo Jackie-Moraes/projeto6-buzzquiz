@@ -122,6 +122,7 @@ function CreateQuizz(){
     document.querySelector('.info-quizz').classList.remove('hidden');
 }
 
+// Função para validar informações de Criação de Quizz
 function verifyInfo() {
     
     let inputLocation = document.querySelectorAll('.info-quizz input')
@@ -144,6 +145,7 @@ function verifyInfo() {
     }
 }
 
+// Função para validar perguntas de Criação de Quizz
 function verifyQuestions() {
 
     let inputLocation = document.querySelectorAll('.questions-quizz input')
@@ -162,6 +164,7 @@ function verifyQuestions() {
     }
 }
 
+// Função para validar níveis de Criação de Quizz
 function verifyLevels() {
 
     let inputLocation = document.querySelectorAll('.levels-quizz input')
@@ -184,6 +187,7 @@ function verifyLevels() {
     }
 }
 
+// Função para voltar a tela Home
 function backHome() {
     getQuizzes();
     document.querySelector('.finish-quizz').classList.add('hidden');
