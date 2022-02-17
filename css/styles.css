@@ -102,11 +102,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #434CA0;
     color: #FFFFFF;
     text-align: center;
     padding: 15px;
     margin-top: 18px;
+    word-wrap: break-word;
 }
 
 /* ------- Respostas ------ */
@@ -126,6 +126,8 @@ header {
     margin-top: 5px;
     font-weight: 700;
     font-size: 13px;
+    width: 150px;
+    word-wrap: break-word;
 }
 
 .answer img{
