@@ -21,6 +21,7 @@ let levelsTitle = [];
 let levelsURL = [];
 let levelsDesc = [];
 let levelsPercent = [];
+let QuizzSelecionado = [];
 let hitCounter = 0;
 let answerCounter = 0;
 let QuestionQuant = 0;
@@ -115,7 +116,6 @@ function EnterQuizz(message){
 
 //Função ao clicar na resposta
 function selectAnswer(elemento,isCorrect){
-    console.log('clicou');
     const noClick = elemento.parentNode.querySelectorAll('.unselected');
     for(let cont=0;cont<noClick.length;cont++){
         noClick[cont].onclick = function() {
@@ -142,7 +142,21 @@ function selectAnswer(elemento,isCorrect){
 
 function showResult(){
     const result = parseInt((hitCounter/QuestionQuant) * 100);
-    console.log(result);
+    const QuizzPage = document.querySelector('.quizz-answering');
+    const levels = QuizzSelecionado.levels;
+    console.log(levels)
+
+    QuizzPage.innerHTML += `
+    <section class="QuizzEnd">
+        <div class="result">
+            <h4>${result}% de acerto:</h4>
+            <img src="/images/teste.jpg" alt="TESTE">
+            <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
+        </div>
+        <button class="ReiniciarQuizz">Reiniciar Quizz</button>
+        <button onclick="backHome()">Voltar pra home</button>
+    </section>
+    `
 }
 
 //Função para embaralhar a matriz
