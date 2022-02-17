@@ -88,7 +88,7 @@ function EnterQuizz(message){
         answers.sort(embaralhar);
 
         for(let i= 0;i<answers.length;i++){
-            GetToAnswers.innerHTML += `<div class="answer">
+            GetToAnswers.innerHTML += `<div class="answer unselected" onclick="selectAnswer(this)">
                     <img src="${answers[i].image}" alt="TESTE">
                     <p>${answers[i].text}</p>
                 </div>`
@@ -97,6 +97,15 @@ function EnterQuizz(message){
         IdAnswer--;
         let CorTitulo = document.getElementById(`${cont}`);
         CorTitulo.style.setProperty("background-color", `${Questions[cont].color}`)
+    }
+}
+
+function selectAnswer(elemento){
+    elemento.classList.remove('unselected');
+    let opacidade = elemento.parentNode.querySelectorAll('.unselected');
+
+    for(let cont=0;cont<opacidade.length;cont++){
+        opacidade[cont].style.setProperty("opacity", "0.3");
     }
 }
 
