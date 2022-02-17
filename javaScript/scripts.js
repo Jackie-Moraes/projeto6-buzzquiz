@@ -69,6 +69,7 @@ function GetQuizz(Id){
     
 //Função para colocar o quizz na tela
 function EnterQuizz(message){ 
+    newID = message.data.id;
     hitCounter = 0;
     answerCounter = 0;
     QuizzSelecionado = message.data;
@@ -158,7 +159,7 @@ function showResult(){
     console.log(levels);
 
     for(let cont = 0;cont<levels.length;cont++){
-        if(result > levels[cont].minValue){
+        if(result >= levels[cont].minValue){
             imgResult = levels[cont].image;
             titleResult = levels[cont].title;
             textResult =  levels[cont].text;
@@ -172,10 +173,12 @@ function showResult(){
             <img src="${imgResult}" alt="TESTE">
             <p>${textResult}</p>
         </div>
-        <button class="ReiniciarQuizz">Reiniciar Quizz</button>
+        <button onclick="GetQuizz(${newID})" class="ReiniciarQuizz">Reiniciar Quizz</button>
         <button onclick="backHome()">Voltar pra home</button>
     </section>
     `
+    document.querySelector('.QuizzEnd').scrollIntoView();
+
 }
 
 //Função para embaralhar a matriz
