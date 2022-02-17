@@ -78,16 +78,15 @@ function EnterQuizz(message){
     for(let cont=0;cont<QuizzSelecionado.questions.length;cont++){
         
         QuizzPage.innerHTML +=`
-        <div class="question">
+        <section class="question">
             <h4 id="${cont}">${Questions[cont].title}</h4>
             <div id="${IdAnswer}" class="answers"></div>
-        </div>`;
+        </section>`;
             
         const GetToAnswers = document.getElementById(`${IdAnswer}`);
         const answers = Questions[cont].answers;
-        console.log(answers);
         answers.sort(embaralhar);
-        console.log(answers);
+
         for(let i= 0;i<answers.length;i++){
             GetToAnswers.innerHTML += `<div class="answer">
                     <img src="${answers[i].image}" alt="TESTE">
@@ -178,6 +177,7 @@ function verifyFinishQuizz() {
 function backHome() {
     getQuizzes();
     document.querySelector('.finish-quizz').classList.add('hidden');
+    document.querySelector('.quizz-answering').classList.add('hidden');
     document.querySelector('.main-page').classList.remove('hidden');
 }
 

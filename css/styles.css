@@ -65,10 +65,6 @@ header {
     color: #EC362D;
 }
 
-.create-first-quizz button:hover,
-.create-quizz:hover{
-    cursor: pointer;
-}
 
 /* -------------- Seção de Seus Quizzes ------------------ */
 .my-quizzes{
@@ -84,6 +80,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 /*  Caixa de Pergunta  */
@@ -112,7 +109,7 @@ header {
     margin-top: 18px;
 }
 
-/*  Respostas  */
+/* ------- Respostas ------ */
 .answers{
     display: flex;
     justify-content: center;
@@ -136,10 +133,65 @@ header {
     width: 163px;
 }
 
-.question img{
-    height: 113px;
-    width: 163px;
+.QuizzEnd{
+    display: flex;
+    flex-direction: column;
+    margin: 13px 0 66px 0;
+    align-items: center;
 }
+
+.QuizzEnd button{
+    margin: 4px;
+    border: none;
+    color: #818181;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+button.ReiniciarQuizz{
+    color: #FFF5F4;
+    background-color: #EC362D;
+    border-radius: 15px;
+    width: 220px;
+}
+
+.result{
+    height: auto;
+    width: 375px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.result h4{
+    height: 99px;
+    width: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EC362D;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px;
+    margin-top: 18px;
+}
+
+.result img{
+    height: 255px;
+    width: 340px;
+}
+
+.result p{
+    width: 340px;
+    font-weight: 700;
+    font-size: 17px;
+}
+
 
 /* Imagem do Quizz que fica no topo da página ao entrar no Quizz */
 .header-quizz{
@@ -273,5 +325,9 @@ input:invalid, textarea:invalid {
 
 .hidden {
     display: none;
+}
+
+button:hover{
+    cursor: pointer;
 }
 

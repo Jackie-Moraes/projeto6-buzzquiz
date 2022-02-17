@@ -23,7 +23,7 @@
     </header>
 
     <main>
-        <section class="main-page">
+        <section class="main-page hidden">
             <!-- Botão para criar o primeiro quizz -->
             <div class="create-first-quizz">
                 <span> Você não criou nenhum quizz ainda :( </span>
@@ -93,6 +93,17 @@
             </div>
 
 
+            <section class="QuizzEnd">
+                <div class="result">
+                    <h4>88% de acerto: Você é praticamente um aluno de Hogwarts!</h4>
+                    <img src="/images/teste.jpg" alt="TESTE">
+                    <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
+                </div>
+                <button class="ReiniciarQuizz">Reiniciar Quizz</button>
+                <button onclick="backHome()">Voltar pra home</button>
+            </section>
+
+
 
             <!-- <img class="header-quizz" src="images/teste.jpg" alt="Imagem Quizz"> -->
 
@@ -123,7 +134,7 @@
         </section>
 
         <!-- Criação de Quizz - Finalização -->
-        <section class="creation finish-quizz hidden">
+        <section class="creation finish-quizz hidden ">
 
             <div class="box other-quizzes">
                 <div class="title">
