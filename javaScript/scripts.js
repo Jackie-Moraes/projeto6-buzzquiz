@@ -261,23 +261,23 @@ function generateQuestions() {
                 <span><strong>Resposta correta</strong></span>
                 <div class="setup questions">
                     <input type="text" name="Resposta" required placeholder="Resposta correta">
-                    <input type="url" name="URL" required placeholder="URL da imagem">
+                    <input type="url" name="URL Resposta" required placeholder="URL da imagem">
                 </div>
 
                 <span><strong>Respostas incorretas</strong></span>
                 <div class="setup questions">
                     <input type="text" name="Resposta" required placeholder="Resposta incorreta 1">
-                    <input type="url" name="URL" required placeholder="URL da imagem 1">
+                    <input type="url" name="URL Resposta" required placeholder="URL da imagem 1">
                 </div>
 
                 <!--<div class="setup questions">
                     <input type="text" name="Resposta" placeholder="Resposta incorreta 2">
-                    <input type="url" name="URL" placeholder="URL da imagem 2">
+                    <input type="url" name="URL Resposta" placeholder="URL da imagem 2">
                 </div>
 
                 <div class="setup questions">
                     <input type="text" name="Resposta" placeholder="Resposta incorreta 3">
-                    <input type="url" name="URL" placeholder="URL da imagem 3">
+                    <input type="url" name="URL Resposta" placeholder="URL da imagem 3">
                 </div> -->
 
             </div>`
@@ -296,7 +296,7 @@ function generateLevels() {
 
                 <span><strong>Nível ${i}</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="Título" required minlength="10" placeholder="Título do nível">
+                    <input type="text" name="Título Nível" required minlength="10" placeholder="Título do nível">
                     <input type="number" name="Percentual" required min="0" max="100" placeholder="% de acerto mínima">
                     <input type="url" name="URL Nível" required placeholder="URL da imagem do nível">
                     <textarea name="Descrição" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
@@ -332,11 +332,12 @@ function storeInformation() {
     const titleQuestions = document.getElementsByName("Texto da Pergunta");
     const titleColor = document.getElementsByName("Cor da Pergunta");
     const answerText = document.getElementsByName("Resposta");
-    const answerURL = document.getElementsByName("URL");
-    const titleLevel = document.getElementsByName("Título");
+    const answerURL = document.getElementsByName("URL Resposta");
+    const titleLevel = document.getElementsByName("Título Nível");
     const urlLevel = document.getElementsByName("URL Nível");
     const descLevel = document.getElementsByName("Descrição");
     const percentLevel = document.getElementsByName("Percentual");
+    // console.log(titleQuestions, titleColor, answerText, answerURL, titleLevel, urlLevel, descLevel, percentLevel);
         
     for (let i = 0; i < titleQuestions.length; i++) {
         questionsTitle.push(titleQuestions[i].value);
