@@ -13,6 +13,7 @@ let quizzTitle = "";
 let quizzUrl = "";
 let quizzQuestions = 0;
 let quizzLevels = 0;
+let questionsTitle = [];
 
 
 // Função para receber quizzes da API
@@ -105,7 +106,7 @@ function CreateQuizz(){
     document.querySelector('.info-quizz').classList.remove('hidden');
 }
 
-function verifyQuestions() {
+function verifyInfo() {
     
     let inputLocation = document.querySelectorAll('.info-quizz input')
     let inputVerifierCounter = 0;
@@ -127,7 +128,7 @@ function verifyQuestions() {
     }
 }
 
-function verifyLevels() {
+function verifyQuestions() {
 
     let inputLocation = document.querySelectorAll('.questions-quizz input')
     let inputVerifierCounter = 0;
@@ -145,7 +146,7 @@ function verifyLevels() {
     }
 }
 
-function verifyFinishQuizz() {
+function verifyLevels() {
 
     let inputLocation = document.querySelectorAll('.levels-quizz input')
     let inputCheck = 0;
@@ -212,7 +213,7 @@ function generateQuestions() {
             </div>`
     }
 
-    questionsLocale.innerHTML += `<button onclick="verifyLevels()">Prosseguir pra criar níveis</button>`;
+    questionsLocale.innerHTML += `<button onclick="verifyQuestions()">Prosseguir pra criar níveis</button>`;
 }
 
 function generateLevels() {
@@ -234,7 +235,7 @@ function generateLevels() {
         `
     }
 
-    levelsLocale.innerHTML += `<button onclick="verifyFinishQuizz()">Finalizar Quizz</button>`;
+    levelsLocale.innerHTML += `<button onclick="verifyLevels()">Finalizar Quizz</button>`;
 }
 
 function finishQuizz() {
@@ -255,6 +256,77 @@ function finishQuizz() {
 
     let imagemQuizz = document.querySelector(".finish-quizz .box");
     imagemQuizz.style.setProperty("background-image", `${gradient}, url('${quizzUrl}')`);
+}
+
+function sendQuizz() {
+    const objetoASerEnviado = {
+        title: quizzTitle,
+        image: quizzUrl,
+        questions: [
+            {
+                title: "Título da pergunta 1",
+                color: "#123456",
+                answers: [
+                    {
+                        text: "Texto da resposta 1",
+                        image: "https://http.cat/411.jpg",
+                        isCorrectAnswer: true
+                    },
+                    {
+                        text: "Texto da resposta 2",
+                        image: "https://http.cat/412.jpg",
+                        isCorrectAnswer: false
+                    }
+                ]
+            },
+            {
+                title: "Título da pergunta 2",
+                color: "#123456",
+                answers: [
+                    {
+                        text: "Texto da resposta 1",
+                        image: "https://http.cat/411.jpg",
+                        isCorrectAnswer: true
+                    },
+                    {
+                        text: "Texto da resposta 2",
+                        image: "https://http.cat/412.jpg",
+                        isCorrectAnswer: false
+                    }
+                ]
+            },
+            {
+                title: "Título da pergunta 3",
+                color: "#123456",
+                answers: [
+                    {
+                        text: "Texto da resposta 1",
+                        image: "https://http.cat/411.jpg",
+                        isCorrectAnswer: true
+                    },
+                    {
+                        text: "Texto da resposta 2",
+                        image: "https://http.cat/412.jpg",
+                        isCorrectAnswer: false
+                    }
+                ]
+            }
+        ],
+        levels: [
+            {
+                title: "Título do nível 1",
+                image: "https://http.cat/411.jpg",
+                text: "Descrição do nível 1",
+                minValue: 0
+            },
+            {
+                title: "Título do nível 2",
+                image: "https://http.cat/412.jpg",
+                text: "Descrição do nível 2",
+                minValue: 50
+            }
+        ]
+    }
 }
 
 getQuizzes();
