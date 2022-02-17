@@ -21,6 +21,9 @@ let levelsTitle = [];
 let levelsURL = [];
 let levelsDesc = [];
 let levelsPercent = [];
+let hitCounter = 0;
+let answerCounter = 0;
+let QuestionQuant = 0;
 
 
 // Função para receber quizzes da API
@@ -65,6 +68,8 @@ function GetQuizz(Id){
     
 //Função para colocar o quizz na tela
 function EnterQuizz(message){ 
+    hitCounter = 0;
+    answerCounter = 0;
     QuizzSelecionado = message.data;
     document.querySelector('.main-page').classList.add('hidden');
     const QuizzPage = document.querySelector('.quizz-answering');
@@ -82,8 +87,8 @@ function EnterQuizz(message){
 
     const Questions = QuizzSelecionado.questions;
     let IdAnswer=-1;
-
-    for(let cont=0;cont<QuizzSelecionado.questions.length;cont++){
+    QuestionQuant = Questions.length;
+    for(let cont=0;cont<Questions.length;cont++){
         
         QuizzPage.innerHTML +=`
         <section class="question">
@@ -96,7 +101,7 @@ function EnterQuizz(message){
         answers.sort(embaralhar);
 
         for(let i= 0;i<answers.length;i++){
-            GetToAnswers.innerHTML += `<div class="answer unselected" onclick="selectAnswer(this)">
+            GetToAnswers.innerHTML += `<div class="answer unselected" onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
                     <img src="${answers[i].image}" alt="TESTE">
                     <p>${answers[i].text}</p>
                 </div>`
@@ -108,13 +113,36 @@ function EnterQuizz(message){
     }
 }
 
-function selectAnswer(elemento){
+//Função ao clicar na resposta
+function selectAnswer(elemento,isCorrect){
+    console.log('clicou');
+    const noClick = elemento.parentNode.querySelectorAll('.unselected');
+    for(let cont=0;cont<noClick.length;cont++){
+        noClick[cont].onclick = function() {
+            return false;
+          }
+    }
     elemento.classList.remove('unselected');
-    let opacidade = elemento.parentNode.querySelectorAll('.unselected');
 
+    if(isCorrect){
+        hitCounter++;
+        console.log(hitCounter);
+    }
+
+    answerCounter++;
+    if(answerCounter === QuestionQuant){
+        setTimeout(showResult,2000);
+    }
+
+    let opacidade = elemento.parentNode.querySelectorAll('.unselected');
     for(let cont=0;cont<opacidade.length;cont++){
         opacidade[cont].style.setProperty("opacity", "0.3");
     }
+}
+
+function showResult(){
+    const result = parseInt((hitCounter/QuestionQuant) * 100);
+    console.log(result);
 }
 
 //Função para embaralhar a matriz
