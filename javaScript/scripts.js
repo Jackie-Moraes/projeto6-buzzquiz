@@ -25,7 +25,7 @@ let QuizzSelecionado = [];
 let hitCounter = 0;
 let answerCounter = 0;
 let QuestionQuant = 0;
-
+let newID = null;
 
 // Função para receber quizzes da API
 function getQuizzes(){
@@ -73,6 +73,7 @@ function EnterQuizz(message){
     answerCounter = 0;
     QuizzSelecionado = message.data;
     document.querySelector('.main-page').classList.add('hidden');
+    document.querySelector('.finish-quizz').classList.add('hidden');
     const QuizzPage = document.querySelector('.quizz-answering');
     QuizzPage.querySelector('.header-quizz').scrollIntoView();
     QuizzPage.classList.remove('hidden');
@@ -232,7 +233,6 @@ function verifyLevels() {
         document.querySelector('.levels-quizz').classList.add('hidden');
         document.querySelector('.finish-quizz').classList.remove('hidden');
         storeInformation();
-        finishQuizz();
     }
 }
 
@@ -320,7 +320,7 @@ function finishQuizz() {
         </div>
     </div>
 
-    <button>Acessar Quizz</button>
+    <button onclick="GetQuizz(${newID})">Acessar Quizz</button>
     <span onclick="backHome()">Voltar pra home</span>
     `
 
@@ -337,8 +337,7 @@ function storeInformation() {
     const urlLevel = document.getElementsByName("URL Nível");
     const descLevel = document.getElementsByName("Descrição");
     const percentLevel = document.getElementsByName("Percentual");
-    // console.log(titleQuestions, titleColor, answerText, answerURL, titleLevel, urlLevel, descLevel, percentLevel);
-        
+    
     for (let i = 0; i < titleQuestions.length; i++) {
         questionsTitle.push(titleQuestions[i].value);
     }
@@ -379,7 +378,7 @@ function storeInformation() {
 }
 
 function sendQuizz() {
-    const objetoASerEnviado = {
+    const buildQuizz = {
         title: quizzTitle,
         image: quizzUrl,
         questions: [
@@ -448,7 +447,13 @@ function sendQuizz() {
         ]
     }
 
-    const sendFinishedQuizz = axios.post(BUZZ_API, objetoASerEnviado)
+    const sendFinishedQuizz = axios.post(BUZZ_API, buildQuizz)
+    sendFinishedQuizz.then(printQuizz);
+}
+
+function printQuizz(newQuizzID) {
+    newID = newQuizzID.data.id;
+    finishQuizz();
 }
 
 getQuizzes();
