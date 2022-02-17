@@ -14,6 +14,13 @@ let quizzUrl = "";
 let quizzQuestions = 0;
 let quizzLevels = 0;
 let questionsTitle = [];
+let questionsColor = [];
+let questionsAnswer = [];
+let questionsURL = [];
+let levelsTitle = [];
+let levelsURL = [];
+let levelsDesc = [];
+let levelsPercent = [];
 
 
 // Função para receber quizzes da API
@@ -147,7 +154,6 @@ function verifyInfo() {
 
 // Função para validar perguntas de Criação de Quizz
 function verifyQuestions() {
-
     let inputLocation = document.querySelectorAll('.questions-quizz input')
     let inputVerifierCounter = 0;
 
@@ -183,6 +189,7 @@ function verifyLevels() {
     if (inputVerifierCounter === inputLocation.length && inputCheck === 1) {
         document.querySelector('.levels-quizz').classList.add('hidden');
         document.querySelector('.finish-quizz').classList.remove('hidden');
+        storeInformation();
         finishQuizz();
     }
 }
@@ -205,31 +212,31 @@ function generateQuestions() {
 
                 <span><strong>Pergunta ${i}</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="Texto da Pergunta ${i}" required minlength="20" placeholder="Texto da pergunta">
-                    <input type="text" name="Cor da Pergunta ${i}" required maxlength="7" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" placeholder="Cor de fundo da pergunta">
+                    <input type="text" name="Texto da Pergunta" required minlength="20" placeholder="Texto da pergunta">
+                    <input type="text" name="Cor da Pergunta" required maxlength="7" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" placeholder="Cor de fundo da pergunta">
                 </div>
 
                 <span><strong>Resposta correta</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="Resposta Correta (Pergunta ${i})" required placeholder="Resposta correta">
-                    <input type="url" name="URL da Imagem Correta (Pergunta ${i})" required placeholder="URL da imagem">
+                    <input type="text" name="Resposta" required placeholder="Resposta correta">
+                    <input type="url" name="URL" required placeholder="URL da imagem">
                 </div>
 
                 <span><strong>Respostas incorretas</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="Resposta Incorreta 1 (Pergunta ${i})" required placeholder="Resposta incorreta 1">
-                    <input type="url" name="URL da Imagem Incorreta 1 (Pergunta ${i})" required placeholder="URL da imagem 1">
+                    <input type="text" name="Resposta" required placeholder="Resposta incorreta 1">
+                    <input type="url" name="URL" required placeholder="URL da imagem 1">
+                </div>
+
+                <!--<div class="setup questions">
+                    <input type="text" name="Resposta" placeholder="Resposta incorreta 2">
+                    <input type="url" name="URL" placeholder="URL da imagem 2">
                 </div>
 
                 <div class="setup questions">
-                    <input type="text" name="Resposta Incorreta 2 (Pergunta ${i})" placeholder="Resposta incorreta 2">
-                    <input type="url" name="URL da Imagem Incorreta 2 (Pergunta ${i})" placeholder="URL da imagem 2">
-                </div>
-
-                <div class="setup questions">
-                    <input type="text" name="Resposta Incorreta 3 (Pergunta ${i})" placeholder="Resposta incorreta 3">
-                    <input type="url" name="URL da Imagem Incorreta 3 (Pergunta ${i})" placeholder="URL da imagem 3">
-                </div>
+                    <input type="text" name="Resposta" placeholder="Resposta incorreta 3">
+                    <input type="url" name="URL" placeholder="URL da imagem 3">
+                </div> -->
 
             </div>`
     }
@@ -247,10 +254,10 @@ function generateLevels() {
 
                 <span><strong>Nível ${i}</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="Título Nível ${i}" required minlength="10" placeholder="Título do nível">
-                    <input type="number" name="Percentual Nível ${i}" required min="0" max="100" placeholder="% de acerto mínima">
-                    <input type="url" name="URL da Imagem Nível ${i}" required placeholder="URL da imagem do nível">
-                    <textarea name="Descrição Nível ${i}" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
+                    <input type="text" name="Título" required minlength="10" placeholder="Título do nível">
+                    <input type="number" name="Percentual" required min="0" max="100" placeholder="% de acerto mínima">
+                    <input type="url" name="URL Nível" required placeholder="URL da imagem do nível">
+                    <textarea name="Descrição" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
                 </div>
             </div>
         `
@@ -279,55 +286,104 @@ function finishQuizz() {
     imagemQuizz.style.setProperty("background-image", `${gradient}, url('${quizzUrl}')`);
 }
 
+function storeInformation() {
+    const titleQuestions = document.getElementsByName("Texto da Pergunta");
+    const titleColor = document.getElementsByName("Cor da Pergunta");
+    const answerText = document.getElementsByName("Resposta");
+    const answerURL = document.getElementsByName("URL");
+    const titleLevel = document.getElementsByName("Título");
+    const urlLevel = document.getElementsByName("URL Nível");
+    const descLevel = document.getElementsByName("Descrição");
+    const percentLevel = document.getElementsByName("Percentual");
+        
+    for (let i = 0; i < titleQuestions.length; i++) {
+        questionsTitle.push(titleQuestions[i].value);
+    }
+
+    for (let i = 0; i < titleColor.length; i++) {
+        questionsColor.push(titleColor[i].value);
+    }
+
+    for (let i = 0; i < answerText.length; i++) {
+        if (answerText[i].value !== '') {
+            questionsAnswer.push(answerText[i].value);
+        }
+    }
+
+    for (let i = 0; i < answerURL.length; i++) {
+        if (answerURL[i].value !== '') {
+            questionsURL.push(answerURL[i].value);
+        }
+    }
+
+    for (let i = 0; i < titleLevel.length; i++) {
+        levelsTitle.push(titleLevel[i].value);
+    }
+
+    for (let i = 0; i < urlLevel.length; i++) {
+        levelsURL.push(urlLevel[i].value);
+    }
+
+    for (let i = 0; i < descLevel.length; i++) {
+        levelsDesc.push(descLevel[i].value);
+    }
+
+    for (let i = 0; i < percentLevel.length; i++) {
+        levelsPercent.push(parseInt(percentLevel[i].value));
+    }
+
+    sendQuizz();
+}
+
 function sendQuizz() {
     const objetoASerEnviado = {
         title: quizzTitle,
         image: quizzUrl,
         questions: [
             {
-                title: "Título da pergunta 1",
-                color: "#123456",
+                title: questionsTitle[0],
+                color: questionsColor[0],
                 answers: [
                     {
-                        text: "Texto da resposta 1",
-                        image: "https://http.cat/411.jpg",
+                        text: questionsAnswer[0],
+                        image: questionsURL[0],
                         isCorrectAnswer: true
                     },
                     {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
+                        text: questionsAnswer[1],
+                        image: questionsURL[1],
                         isCorrectAnswer: false
                     }
                 ]
             },
             {
-                title: "Título da pergunta 2",
-                color: "#123456",
+                title: questionsTitle[1],
+                color: questionsColor[1],
                 answers: [
                     {
-                        text: "Texto da resposta 1",
-                        image: "https://http.cat/411.jpg",
+                        text: questionsAnswer[2],
+                        image: questionsURL[2],
                         isCorrectAnswer: true
                     },
                     {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
+                        text: questionsAnswer[3],
+                        image: questionsURL[3],
                         isCorrectAnswer: false
                     }
                 ]
             },
             {
-                title: "Título da pergunta 3",
-                color: "#123456",
+                title: questionsTitle[2],
+                color: questionsColor[2],
                 answers: [
                     {
-                        text: "Texto da resposta 1",
-                        image: "https://http.cat/411.jpg",
+                        text: questionsAnswer[4],
+                        image: questionsURL[4],
                         isCorrectAnswer: true
                     },
                     {
-                        text: "Texto da resposta 2",
-                        image: "https://http.cat/412.jpg",
+                        text: questionsAnswer[5],
+                        image: questionsURL[5],
                         isCorrectAnswer: false
                     }
                 ]
@@ -335,19 +391,21 @@ function sendQuizz() {
         ],
         levels: [
             {
-                title: "Título do nível 1",
-                image: "https://http.cat/411.jpg",
-                text: "Descrição do nível 1",
-                minValue: 0
+                title: levelsTitle[0],
+                image: levelsURL[0],
+                text: levelsDesc[0],
+                minValue: levelsPercent[0]
             },
             {
-                title: "Título do nível 2",
-                image: "https://http.cat/412.jpg",
-                text: "Descrição do nível 2",
-                minValue: 50
+                title: levelsTitle[1],
+                image: levelsURL[1],
+                text: levelsDesc[1],
+                minValue: levelsPercent[1]
             }
         ]
     }
+
+    const sendFinishedQuizz = axios.post(BUZZ_API, objetoASerEnviado)
 }
 
 getQuizzes();
