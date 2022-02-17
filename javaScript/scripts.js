@@ -60,13 +60,13 @@ function EnterQuizz(message){
     QuizzSelecionado = message.data;
     document.querySelector('.main-page').classList.add('hidden');
     const QuizzPage = document.querySelector('.quizz-answering');
+    QuizzPage.querySelector('.header-quizz').scrollIntoView();
     QuizzPage.classList.remove('hidden');
     QuizzPage.innerHTML = `
     <div class="header-quizz">
         <h2 class="header-title">
         </h2>
     </div>`;
-
     // Coloca a Imagem e Titulo do Quizz na header da página
     const QuizzHeader = QuizzPage.querySelector('.header-quizz');
     QuizzHeader.style.setProperty("background-image", `${gradient}, url('${QuizzSelecionado.image}')`);
