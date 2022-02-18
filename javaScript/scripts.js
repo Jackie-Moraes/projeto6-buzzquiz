@@ -30,6 +30,8 @@ let serializedQuizz = null;
 let serializedList = null;
 let savedQuizz = null;
 let newID = null;
+let questionScroll = [];
+let contScroll = 0;
 
 // Função para receber quizzes da API
 function getQuizzes(){
@@ -82,7 +84,7 @@ function EnterQuizz(message){
     document.querySelector('.main-page').classList.add('hidden');
     document.querySelector('.finish-quizz').classList.add('hidden');
     const QuizzPage = document.querySelector('.quizz-answering');
-    QuizzPage.querySelector('.header-quizz').scrollIntoView();
+    QuizzPage.querySelector('.header-quizz').scrollIntoView({behavior: "smooth"});
     QuizzPage.classList.remove('hidden');
     QuizzPage.innerHTML = `
     <div class="header-quizz">
@@ -107,7 +109,7 @@ function EnterQuizz(message){
             
         const GetToAnswers = document.getElementById(`${IdAnswer}`);
         const answers = Questions[cont].answers;
-        answers.sort(embaralhar);
+        answers.sort(shuffle);
         for(let i= 0;i<answers.length;i++){
             if(answers[i].isCorrectAnswer === true){
             GetToAnswers.innerHTML += `<div class="answer unselected" onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
@@ -126,6 +128,8 @@ function EnterQuizz(message){
         let CorTitulo = document.getElementById(`${cont}`);
         CorTitulo.style.setProperty("background-color", `${Questions[cont].color}`)
     }
+    questionScroll = document.querySelectorAll('.question');
+    contScroll=1;
 }
 
 //Função ao clicar na resposta
@@ -133,6 +137,8 @@ function selectAnswer(elemento,isCorrect){
     const noClick = elemento.parentNode.querySelectorAll('.unselected');
     const errado = elemento.parentNode.querySelectorAll('.errado');
     const certo = elemento.parentNode.querySelector('.certo');
+
+    setTimeout(scrollIntoQuestion,2000);
 
     for(let cont=0;cont<errado.length;cont++){
         errado[cont].style.setProperty("color", `#FF0B0B`);
@@ -161,6 +167,14 @@ function selectAnswer(elemento,isCorrect){
     for(let cont=0;cont<opacidade.length;cont++){
         opacidade[cont].style.setProperty("opacity", "0.3");
     }
+}
+
+//Função que rola para próxima pergunta
+function scrollIntoQuestion(){
+    questionScroll[contScroll].scrollIntoView({behavior: "smooth", block: "center"});
+    contScroll;
+    contScroll++;
+    
 }
 
 function showResult(){
@@ -198,12 +212,12 @@ function showResult(){
         <button onclick="backHome()">Voltar pra home</button>
     </section>
     `
-    document.querySelector('.QuizzEnd').scrollIntoView({behavior: "smooth"});
+    document.querySelector('.QuizzEnd').scrollIntoView({behavior: "smooth",block: "center"});
 
 }
 
 //Função para embaralhar a matriz
-function embaralhar() { 
+function shuffle() { 
 	return Math.random() - 0.5; 
 }
 
