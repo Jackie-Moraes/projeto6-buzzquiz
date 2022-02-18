@@ -192,6 +192,8 @@ button.ReiniciarQuizz{
     width: 340px;
     font-weight: 700;
     font-size: 17px;
+    word-wrap: break-word;
+    text-align: center;
 }
 
 

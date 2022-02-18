@@ -108,12 +108,18 @@ function EnterQuizz(message){
         const GetToAnswers = document.getElementById(`${IdAnswer}`);
         const answers = Questions[cont].answers;
         answers.sort(embaralhar);
-
         for(let i= 0;i<answers.length;i++){
+            if(answers[i].isCorrectAnswer === true){
             GetToAnswers.innerHTML += `<div class="answer unselected" onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
                     <img src="${answers[i].image}" alt="TESTE">
-                    <p>${answers[i].text}</p>
+                    <p class = "certo">${answers[i].text}</p>
                 </div>`
+            } else {
+                GetToAnswers.innerHTML += `<div class="answer unselected " onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
+                <img src="${answers[i].image}" alt="TESTE">
+                <p class = "errado">${answers[i].text}</p>
+            </div>`
+            }
         }
 
         IdAnswer--;
@@ -125,6 +131,15 @@ function EnterQuizz(message){
 //Função ao clicar na resposta
 function selectAnswer(elemento,isCorrect){
     const noClick = elemento.parentNode.querySelectorAll('.unselected');
+    const errado = elemento.parentNode.querySelectorAll('.errado');
+    const certo = elemento.parentNode.querySelector('.certo');
+
+    for(let cont=0;cont<errado.length;cont++){
+        errado[cont].style.setProperty("color", `#FF0B0B`);
+    }
+
+    certo.style.setProperty("color", '#009C22');
+
     for(let cont=0;cont<noClick.length;cont++){
         noClick[cont].onclick = function() {
             return false;
@@ -183,7 +198,7 @@ function showResult(){
         <button onclick="backHome()">Voltar pra home</button>
     </section>
     `
-    document.querySelector('.QuizzEnd').scrollIntoView();
+    document.querySelector('.QuizzEnd').scrollIntoView({behavior: "smooth"});
 
 }
 
