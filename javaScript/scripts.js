@@ -70,10 +70,15 @@ function MostrarQuizzes(){
     }
 }
 
+//Função que checa se o usuário ja criou um quizz
 function checkLocalStorage(){
     if(localStorage.length>0){
         document.querySelector('.create-first-quizz').classList.add('hidden');
         document.querySelector('.my-quizzes').classList.remove('hidden');
+        console.log(localStorage);
+        for (let cont = 0; cont<localStorage.length;cont++){
+
+        }
     }
 }
 
@@ -193,13 +198,7 @@ function showResult(){
     let titleResult = null;
     let textResult = null;
 
-    // let Arraylevels = [];
-    // for(let cont = 0;cont<levels.length;cont++){
-    //     Arraylevels[cont] = levels[cont].minValue;
-    // }
-
     levels.sort(sortAscending);
-    console.log(levels);
 
     for(let cont = 0;cont<levels.length;cont++){
         if(result >= levels[cont].minValue){
@@ -220,7 +219,7 @@ function showResult(){
         <button onclick="backHome()">Voltar pra home</button>
     </section>
     `
-    document.querySelector('.QuizzEnd').scrollIntoView({behavior: "smooth",block: "center"});
+    document.querySelector('.result').scrollIntoView({behavior: "smooth",block: "center"});
 
 }
 
