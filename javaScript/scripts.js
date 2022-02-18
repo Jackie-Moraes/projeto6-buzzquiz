@@ -51,6 +51,7 @@ function CarregarQuizzes(message){
 
 // Função para mostrar os Quizzes na tela 
 function MostrarQuizzes(){
+    checkLocalStorage();
     const AllQuizzes = document.querySelector('.other-quizzes');
     AllQuizzes.innerHTML = "<h2>Todos os Quizzes</h2>";
     let selecionarImagem = null;
@@ -66,6 +67,13 @@ function MostrarQuizzes(){
 
         selecionarImagem = document.getElementById(`${id}`);
         selecionarImagem.style.setProperty("background-image", `${gradient}, url('${Quizzes[contador].image}')`);
+    }
+}
+
+function checkLocalStorage(){
+    if(localStorage.length>0){
+        document.querySelector('.create-first-quizz').classList.add('hidden');
+        document.querySelector('.my-quizzes').classList.remove('hidden');
     }
 }
 
@@ -223,7 +231,7 @@ function shuffle() {
 
 //Função para colocar array na ordem
 function sortAscending(a, b){
-    return (a - b);
+    return (a.minValue - b.minValue);
   }
 
 
