@@ -25,6 +25,10 @@ let QuizzSelecionado = [];
 let hitCounter = 0;
 let answerCounter = 0;
 let QuestionQuant = 0;
+let buildQuizz = null;
+let serializedQuizz = null;
+let serializedList = null;
+let savedQuizz = null;
 let newID = null;
 
 // Função para receber quizzes da API
@@ -38,6 +42,8 @@ function getQuizzes(){
 function CarregarQuizzes(message){
     Quizzes = message.data;
     console.log(Quizzes);
+    serializedList = localStorage.getItem("Quizzes");
+    savedQuizz = JSON.parse(serializedList);
     MostrarQuizzes();
 }
 
@@ -404,7 +410,7 @@ function storeInformation() {
 }
 
 function sendQuizz() {
-    const buildQuizz = {
+    buildQuizz = {
         title: quizzTitle,
         image: quizzUrl,
         questions: [
@@ -474,6 +480,8 @@ function sendQuizz() {
     }
 
     const sendFinishedQuizz = axios.post(BUZZ_API, buildQuizz)
+    serializedQuizz = JSON.stringify(buildQuizz);
+    localStorage.setItem("Quizzes", serializedQuizz);
     sendFinishedQuizz.then(printQuizz);
 }
 
