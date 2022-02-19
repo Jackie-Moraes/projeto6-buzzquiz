@@ -74,6 +74,16 @@ header {
     align-items: center;
     justify-content: space-between;
     width: 340px;
+    margin-left: 5px;
+}
+
+h2{
+    font-size: 20px;
+}
+
+.my-quizzes{
+    display: flex;
+    flex-direction: column;
 }
 
 /* -------------- Página do Quizz ------------------ */
@@ -225,8 +235,9 @@ button.ReiniciarQuizz{
     color: #EC362D;
 }
 
-h2{
+.quizzes h2{
     margin: 35px 5px 0;
+    font-size: 20px;
 }
 
 .quizzes{
@@ -368,12 +379,22 @@ button:hover{
         width: 1051px;
         height: 181px;
     }
+
     .other-quizzes {
         justify-content: center;
         flex-direction: row;
         flex-wrap: wrap;
     }
+
     .quizzes {
         width: 1062px;
+    }
+
+    .my-quizzes{
+    flex-direction: row;
+    }
+
+    .my-quizzes-title{
+        width: 169px;
     }
 }

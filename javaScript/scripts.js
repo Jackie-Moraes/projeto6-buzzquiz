@@ -76,7 +76,7 @@ function checkLocalStorage(){
     if(storage){
         document.querySelector('.my-quizzes').classList.remove('hidden');
         
-        myQuizzes.innerHTML = `<div class="my-quizzes-title"><h2>Seus Quizzes</h2> <ion-icon onclick="createQuizz()" class="create-quizz" name="add-circle"></ion-icon></div>`;
+        myQuizzes.innerHTML = '';
 
         getMyQuizzes(storage);
     } else{
