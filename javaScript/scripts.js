@@ -51,7 +51,7 @@ function carregarQuizzes(message){
 function mostrarQuizzes(){
     checkLocalStorage();
     const AllQuizzes = document.querySelector('.other-quizzes');
-    AllQuizzes.innerHTML = "<h2>Todos os Quizzes</h2>";
+    AllQuizzes.innerHTML = "";
     let selecionarImagem = null;
     for(contador=0;contador<Quizzes.length;contador++){
         const id = Quizzes[contador].id;
