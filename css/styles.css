@@ -68,7 +68,7 @@ header {
 
 
 /* -------------- Seção de Seus Quizzes ------------------ */
-.my-quizzes{
+.my-quizzes-title{
     display: flex;
     align-items: center;
     justify-content: space-between;

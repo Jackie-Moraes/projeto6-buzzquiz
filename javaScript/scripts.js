@@ -36,21 +36,20 @@ let contScroll = 0;
 // Função para receber quizzes da API
 function getQuizzes(){
     const request = axios.get(BUZZ_API);
-    request.then(CarregarQuizzes);
+    request.then(carregarQuizzes);
     request.catch();
 }
 
 // Função para carregar os Quizzes no array
-function CarregarQuizzes(message){
+function carregarQuizzes(message){
     Quizzes = message.data;
     console.log(Quizzes);
-    serializedList = localStorage.getItem("Quizzes");
     savedQuizz = JSON.parse(serializedList);
-    MostrarQuizzes();
+    mostrarQuizzes();
 }
 
 // Função para mostrar os Quizzes na tela 
-function MostrarQuizzes(){
+function mostrarQuizzes(){
     checkLocalStorage();
     const AllQuizzes = document.querySelector('.other-quizzes');
     AllQuizzes.innerHTML = "<h2>Todos os Quizzes</h2>";
@@ -59,7 +58,7 @@ function MostrarQuizzes(){
         const id = Quizzes[contador].id;
 
         AllQuizzes.innerHTML += `
-        <div class="box" id="${id}" onclick = "GetQuizz(${id})">
+        <div class="box" id="${id}" onclick = "getQuizz(${id})">
             <div class="title">
                 <span>${Quizzes[contador].title}</span>
             </div>
@@ -72,24 +71,53 @@ function MostrarQuizzes(){
 
 //Função que checa se o usuário ja criou um quizz
 function checkLocalStorage(){
-    if(localStorage.length>0){
-        document.querySelector('.create-first-quizz').classList.add('hidden');
+    const storage = localStorage.getItem("myQuizzes");
+    const myQuizzes = document.querySelector('.my-quizzes');
+    
+    if(storage){
         document.querySelector('.my-quizzes').classList.remove('hidden');
-        console.log(localStorage);
-        for (let cont = 0; cont<localStorage.length;cont++){
+        
+        myQuizzes.innerHTML = `<div class="my-quizzes-title"><h2>Seus Quizzes</h2> <ion-icon onclick="createQuizz()" class="create-quizz" name="add-circle"></ion-icon></div>`;
 
-        }
+        getMyQuizzes(storage);
+    } else{
+        document.querySelector('.create-first-quizz').classList.remove('hidden');
     }
 }
 
+function getMyQuizzes( storage){
+    storage = JSON.parse(storage);
+    for (let cont = 0; cont<storage.length;cont++){
+        const request = axios.get(BUZZ_API + storage[cont]); 
+        request.then(printMyQuizzes); 
+    }
+}
+
+function printMyQuizzes(message){
+    const myQuizzes = document.querySelector('.my-quizzes');
+    const dados = message.data;
+    
+    const id = dados.id;
+
+        myQuizzes.innerHTML += `
+        <div class="box" id="${id}" onclick = "getQuizz(${id})">
+            <div class="title">
+                <span>${dados.title}</span>
+            </div>
+        </div>`
+
+        selecionarImagem = document.getElementById(`${id}`);
+        selecionarImagem.style.setProperty("background-image", `${gradient}, url('${dados.image}')`);
+}
+
 //Função para pegar o Quizz clicado da API
-function GetQuizz(Id){
+function getQuizz(Id){
     const request = axios.get(BUZZ_API +Id); 
-    request.then(EnterQuizz); 
+    request.then(enterQuizz); 
 } 
     
 //Função para colocar o quizz na tela
-function EnterQuizz(message){ 
+function enterQuizz(message){ 
     newID = message.data.id;
     hitCounter = 0;
     answerCounter = 0;
@@ -97,13 +125,13 @@ function EnterQuizz(message){
     document.querySelector('.main-page').classList.add('hidden');
     document.querySelector('.finish-quizz').classList.add('hidden');
     const QuizzPage = document.querySelector('.quizz-answering');
-    QuizzPage.querySelector('.header-quizz').scrollIntoView({behavior: "smooth"});
     QuizzPage.classList.remove('hidden');
     QuizzPage.innerHTML = `
     <div class="header-quizz">
-        <h2 class="header-title">
-        </h2>
+    <h2 class="header-title">
+    </h2>
     </div>`;
+    QuizzPage.querySelector('.header-quizz').scrollIntoView({behavior: "smooth"});
     // Coloca a Imagem e Titulo do Quizz na header da página
     const QuizzHeader = QuizzPage.querySelector('.header-quizz');
     QuizzHeader.style.setProperty("background-image", `${gradient}, url('${QuizzSelecionado.image}')`);
@@ -151,8 +179,6 @@ function selectAnswer(elemento,isCorrect){
     const errado = elemento.parentNode.querySelectorAll('.errado');
     const certo = elemento.parentNode.querySelector('.certo');
 
-    setTimeout(scrollIntoQuestion,2000);
-
     for(let cont=0;cont<errado.length;cont++){
         errado[cont].style.setProperty("color", `#FF0B0B`);
     }
@@ -174,6 +200,8 @@ function selectAnswer(elemento,isCorrect){
     answerCounter++;
     if(answerCounter === QuestionQuant){
         setTimeout(showResult,2000);
+    } else{
+        setTimeout(scrollIntoQuestion,2000);
     }
 
     let opacidade = elemento.parentNode.querySelectorAll('.unselected');
@@ -215,7 +243,7 @@ function showResult(){
             <img src="${imgResult}" alt="TESTE">
             <p>${textResult}</p>
         </div>
-        <button onclick="GetQuizz(${newID})" class="ReiniciarQuizz">Reiniciar Quizz</button>
+        <button onclick="getQuizz(${newID})" class="ReiniciarQuizz">Reiniciar Quizz</button>
         <button onclick="backHome()">Voltar pra home</button>
     </section>
     `
@@ -235,7 +263,7 @@ function sortAscending(a, b){
 
 
 // Função para ir para a página de criar Quizzes
-function CreateQuizz(){
+function createQuizz(){
     document.querySelector('.main-page').classList.add('hidden');
     document.querySelector('.info-quizz').classList.remove('hidden');
 }
@@ -307,6 +335,7 @@ function verifyLevels() {
 // Função para voltar a tela Home
 function backHome() {
     getQuizzes();
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     document.querySelector('.finish-quizz').classList.add('hidden');
     document.querySelector('.quizz-answering').classList.add('hidden');
     document.querySelector('.main-page').classList.remove('hidden');
@@ -388,7 +417,7 @@ function finishQuizz() {
         </div>
     </div>
 
-    <button onclick="GetQuizz(${newID})">Acessar Quizz</button>
+    <button onclick="getQuizz(${newID})">Acessar Quizz</button>
     <span onclick="backHome()">Voltar pra home</span>
     `
 
@@ -516,14 +545,27 @@ function sendQuizz() {
     }
 
     const sendFinishedQuizz = axios.post(BUZZ_API, buildQuizz)
-    serializedQuizz = JSON.stringify(buildQuizz);
-    localStorage.setItem("Quizzes", serializedQuizz);
     sendFinishedQuizz.then(printQuizz);
 }
 
 function printQuizz(newQuizzID) {
     newID = newQuizzID.data.id;
+    storeQuizz(newID.toString());
     finishQuizz();
 }
+
+//Função que guarda o id do quizz criado num array no local storage
+function storeQuizz(id) {
+    const storage = localStorage.getItem("myQuizzes");
+    let myQuizzesConvert = [];
+
+    if (storage) {
+      myQuizzesConvert = JSON.parse(storage);
+    }
+
+    myQuizzesConvert.push(id);
+    myQuizzesConvert = JSON.stringify(myQuizzesConvert);
+    localStorage.setItem("myQuizzes", myQuizzesConvert);
+  }
 
 getQuizzes();
