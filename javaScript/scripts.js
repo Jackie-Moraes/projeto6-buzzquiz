@@ -238,8 +238,10 @@ function showResult(){
     <section class="QuizzEnd">
         <div class="result">
             <h4>${result}% de acerto: ${titleResult}</h4>
+            <div>
             <img src="${imgResult}" alt="TESTE">
             <p>${textResult}</p>
+            </div>
         </div>
         <button onclick="getQuizz(${newID})" class="ReiniciarQuizz">Reiniciar Quizz</button>
         <button onclick="backHome()">Voltar pra home</button>
