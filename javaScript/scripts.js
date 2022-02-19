@@ -74,7 +74,7 @@ function checkLocalStorage(){
     const myQuizzes = document.querySelector('.my-quizzes');
     
     if(storage){
-        document.querySelector('.my-quizzes').classList.remove('hidden');
+        document.querySelector('.allMyQuizzes').classList.remove('hidden');
         
         myQuizzes.innerHTML = '';
 

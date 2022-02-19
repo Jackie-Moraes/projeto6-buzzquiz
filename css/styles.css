@@ -375,9 +375,18 @@ button:hover{
 }
 
 @media (min-width:1100px) {
+    .main-page{
+        margin-top: 138px;
+    }
     .create-first-quizz{
         width: 1051px;
         height: 181px;
+        margin-top: 8px;
+        margin-bottom: 36px;
+    }
+
+    .quizzes h2{
+    margin-top: 41px;
     }
 
     .other-quizzes {
