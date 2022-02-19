@@ -43,7 +43,6 @@ function getQuizzes(){
 // Função para carregar os Quizzes no array
 function carregarQuizzes(message){
     Quizzes = message.data;
-    console.log(Quizzes);
     savedQuizz = JSON.parse(serializedList);
     mostrarQuizzes();
 }
@@ -194,7 +193,6 @@ function selectAnswer(elemento,isCorrect){
 
     if(isCorrect){
         hitCounter++;
-        console.log(hitCounter);
     }
 
     answerCounter++;
@@ -417,8 +415,8 @@ function finishQuizz() {
         </div>
     </div>
 
-    <button onclick="getQuizz(${newID})">Acessar Quizz</button>
-    <span onclick="backHome()">Voltar pra home</span>
+    <button class="accessQuizz" onclick="getQuizz(${newID})">Acessar Quizz</button>
+    <button onclick="backHome()">Voltar pra home</button>
     `
 
     let imagemQuizz = document.querySelector(".finish-quizz .box");
