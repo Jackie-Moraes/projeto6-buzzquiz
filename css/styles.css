@@ -285,7 +285,6 @@ button.ReiniciarQuizz{
 
 .creation {
     margin-top: 100px;
-    text-align: center;
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -296,10 +295,11 @@ button.ReiniciarQuizz{
     font-size: 18px;
     border: none;
     background: transparent;
-    color: #818181;
 }
 
-.creation .accessQuizz {
+
+.creation .accessQuizz,
+.creation button{
     margin-top: 29px;
     padding: 16px 25px;
     font-size: 18px;
@@ -307,7 +307,13 @@ button.ReiniciarQuizz{
     background: #EC362D;
     border: none;
     border-radius: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+button.backHome{
+    color: #818181;
+    background: transparent;
+    margin: 0;
 }
 
 
@@ -323,8 +329,8 @@ button.ReiniciarQuizz{
     text-align: left;
 }
 
-.questions-quizz span,
-.levels-quizz span{
+
+.creation strong{
     margin: 0 20px;
 }
 
@@ -332,12 +338,11 @@ button.ReiniciarQuizz{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 8px;
 }
 
 .setup input {
-    width: 90%;
+    width: 92%;
     height: 46px;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
@@ -347,6 +352,11 @@ button.ReiniciarQuizz{
     outline: none;
     padding-left: 14px;
     font-size: 19px;
+    margin: 0 20px;
+}
+
+.creation .box{
+    margin-top: 29px;
 }
 
 .questions {
@@ -354,8 +364,8 @@ button.ReiniciarQuizz{
 }
 
 /* Descrição do Quizz */
-textarea {
-    width: 90%;
+.setup textarea {
+    width: 92%;
     background: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 5px;
@@ -364,6 +374,7 @@ textarea {
     outline: none;
     padding-left: 14px;
     font-size: 19px;
+    margin: 0 20px;
 }
 
 ::placeholder {
@@ -477,5 +488,17 @@ button:hover{
     .QuizzEnd button{
         font-size: 21px;
         padding: 1.2vh;
+    }
+
+
+    /* Páginas de criaçao de quizz */
+    .container  {
+        width: 600px;
+    }
+
+    .creation .box{
+        width: 500px;
+        height: 266px;
+        margin-top: 46px;
     }
 }
