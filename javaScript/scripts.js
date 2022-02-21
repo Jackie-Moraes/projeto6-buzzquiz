@@ -359,7 +359,7 @@ function generateQuestions() {
 
                 <span><strong>Pergunta ${i}</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="Texto da Pergunta" required minlength="20" placeholder="Texto da pergunta">
+                    <input type="text" name="Texto da Pergunta" required minlength="20" placeholder="Texto da pergunta" data-identifier="question">
                     <input type="text" name="Cor da Pergunta" required maxlength="7" pattern="^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" placeholder="Cor de fundo da pergunta">
                 </div>
 
@@ -401,7 +401,7 @@ function generateLevels() {
 
                 <span><strong>Nível ${i}</strong></span>
                 <div class="setup questions">
-                    <input type="text" name="Título Nível" required minlength="10" placeholder="Título do nível">
+                    <input type="text" name="Título Nível" required minlength="10" placeholder="Título do nível" data-identifier="level">
                     <input type="number" name="Percentual" required min="0" max="100" placeholder="% de acerto mínima">
                     <input type="url" name="URL Nível" required placeholder="URL da imagem do nível">
                     <textarea name="Descrição" required rows="5" minlength="30" placeholder="Descrição do nível"></textarea>
