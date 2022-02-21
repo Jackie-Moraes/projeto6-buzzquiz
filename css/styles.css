@@ -409,7 +409,6 @@ button:hover{
     }
 
     .other-quizzes {
-        justify-content: center;
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -420,6 +419,11 @@ button:hover{
 
     .my-quizzes{
     flex-direction: row;
+    flex-wrap: wrap;
+    }
+
+    .allMyQuizzes{
+        width: 1062px;
     }
 
     .my-quizzes-title{

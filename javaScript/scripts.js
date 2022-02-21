@@ -50,6 +50,7 @@ function carregarQuizzes(message){
 // Função para mostrar os Quizzes na tela 
 function mostrarQuizzes(){
     checkLocalStorage();
+    document.querySelector('.quizzes').classList.remove('hidden');
     const AllQuizzes = document.querySelector('.other-quizzes');
     AllQuizzes.innerHTML = "";
     let selecionarImagem = null;
@@ -57,7 +58,7 @@ function mostrarQuizzes(){
         const id = Quizzes[contador].id;
 
         AllQuizzes.innerHTML += `
-        <div class="box" id="${id}" onclick = "getQuizz(${id})">
+        <div class="box" id="${id}" onclick = "getQuizz(${id})" data-identifier="general-quizzes" data-identifier="quizz-card">
             <div class="title">
                 <span>${Quizzes[contador].title}</span>
             </div>
@@ -99,7 +100,7 @@ function printMyQuizzes(message){
     const id = dados.id;
 
         myQuizzes.innerHTML += `
-        <div class="box" id="${id}" onclick = "getQuizz(${id})">
+        <div class="box" id="${id}" onclick = "getQuizz(${id})" data-identifier="user-quizzes" data-identifier="quizz-card">
             <div class="title">
                 <span>${dados.title}</span>
             </div>
@@ -142,7 +143,7 @@ function enterQuizz(message){
     for(let cont=0;cont<Questions.length;cont++){
         
         QuizzPage.innerHTML +=`
-        <section class="question">
+        <section class="question" data-identifier="question">
             <h4 id="${cont}">${Questions[cont].title}</h4>
             <div id="${IdAnswer}" class="answers"></div>
         </section>`;
@@ -152,12 +153,12 @@ function enterQuizz(message){
         answers.sort(shuffle);
         for(let i= 0;i<answers.length;i++){
             if(answers[i].isCorrectAnswer === true){
-            GetToAnswers.innerHTML += `<div class="answer unselected" onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
+            GetToAnswers.innerHTML += `<div class="answer unselected" data-identifier="answer" onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
                     <img src="${answers[i].image}" alt="TESTE">
                     <p class = "certo">${answers[i].text}</p>
                 </div>`
             } else {
-                GetToAnswers.innerHTML += `<div class="answer unselected " onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
+                GetToAnswers.innerHTML += `<div class="answer unselected " data-identifier="answer" onclick="selectAnswer(this,${answers[i].isCorrectAnswer})">
                 <img src="${answers[i].image}" alt="TESTE">
                 <p class = "errado">${answers[i].text}</p>
             </div>`
@@ -236,7 +237,7 @@ function showResult(){
 
     QuizzPage.innerHTML += `
     <section class="QuizzEnd">
-        <div class="result">
+        <div class="result" data-identifier="quizz-result">
             <h4>${result}% de acerto: ${titleResult}</h4>
             <div>
             <img src="${imgResult}" alt="TESTE">
@@ -288,6 +289,8 @@ function verifyInfo() {
         quizzQuestions = inputLocation[2].value;
         quizzLevels = inputLocation[3].value;
         generateQuestions();
+    } else{
+        alert("Preencha os dados corretamente!");
     }
 }
 
@@ -301,11 +304,14 @@ function verifyQuestions() {
             inputVerifierCounter++;
         }
     }
+    console.log(inputVerifierCounter);
 
     if (inputVerifierCounter === inputLocation.length) {
         document.querySelector('.questions-quizz').classList.add('hidden');
         document.querySelector('.levels-quizz').classList.remove('hidden');
         generateLevels();
+    }else{
+        alert("Preencha os dados corretamente!");
     }
 }
 
@@ -329,6 +335,8 @@ function verifyLevels() {
         document.querySelector('.levels-quizz').classList.add('hidden');
         document.querySelector('.finish-quizz').classList.remove('hidden');
         storeInformation();
+    }else{
+        alert("Preencha os dados corretamente!");
     }
 }
 
@@ -367,7 +375,7 @@ function generateQuestions() {
                     <input type="url" name="URL Resposta" required placeholder="URL da imagem 1">
                 </div>
 
-                <!--<div class="setup questions">
+                <!-- <div class="setup questions">
                     <input type="text" name="Resposta" placeholder="Resposta incorreta 2">
                     <input type="url" name="URL Resposta" placeholder="URL da imagem 2">
                 </div>

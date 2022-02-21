@@ -25,20 +25,20 @@
     <main>
         <section class="main-page ">
             <!-- Botão para criar o primeiro quizz -->
-            <div class="create-first-quizz hidden">
+            <div class="create-first-quizz hidden" data-identifier="create-quizz">
                 <span> Você não criou nenhum quizz ainda :( </span>
                 <button onclick="createQuizz()">Criar Quizz</button>
             </div>
 
             <!-- Aba de Seus Quizzes -->
             <section class="allMyQuizzes hidden">
-                <div class="my-quizzes-title"><h2>Seus Quizzes</h2> <ion-icon onclick="createQuizz()" class="create-quizz" name="add-circle"></ion-icon></div>
+                <div class="my-quizzes-title"><h2>Seus Quizzes</h2> <ion-icon onclick="createQuizz()" class="create-quizz" name="add-circle" data-identifier="create-quizz"></ion-icon></div>
                 <section class="my-quizzes">
                 </section>
             </section>
 
             <!-- Todos os Quizzes -->
-            <section class="quizzes">
+            <section class="quizzes hidden">
                 <h2>Todos os Quizzes</h2>
                 <section class="other-quizzes">
                 </section>
