@@ -76,6 +76,7 @@ function checkLocalStorage(){
     
     if(storage){
         document.querySelector('.allMyQuizzes').classList.remove('hidden');
+        document.querySelector('.create-first-quizz').classList.add('hidden');
         
         myQuizzes.innerHTML = '';
 
