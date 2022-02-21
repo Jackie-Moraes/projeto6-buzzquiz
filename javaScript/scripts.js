@@ -427,7 +427,7 @@ function finishQuizz() {
     </div>
 
     <button class="accessQuizz" onclick="getQuizz(${newID})">Acessar Quizz</button>
-    <button onclick="backHome()">Voltar pra home</button>
+    <button class = 'backHome' onclick="backHome()">Voltar pra home</button>
     `
 
     let imagemQuizz = document.querySelector(".finish-quizz .box");
